@@ -8,7 +8,7 @@ QueryFolio is a browser-based CSV query engine and data engineering portfolio. I
 
 - Frontend: Vue 3, Vite, TypeScript, Tailwind CSS v4, Bun
 - Backend: Rust, Axum, Tokio
-- WASM: Rust, wasm-bindgen, planned Apache DataFusion integration
+- WASM: Rust, wasm-bindgen, Apache DataFusion 53.1.0 integration
 - Workflow: GitHub issues, focused branches, reviewed pull requests
 
 ## Repository Layout
@@ -44,6 +44,8 @@ Verify the WebAssembly crate setup with:
 rustup target add wasm32-unknown-unknown
 cargo check -p query-engine-wasm --target wasm32-unknown-unknown
 ```
+
+The WASM crate currently pins DataFusion to 53.1.0 with a minimal SQL feature set and enables `getrandom`'s `wasm_js` feature for browser-compatible `wasm32-unknown-unknown` builds.
 
 You can also run both services through Podman Compose:
 

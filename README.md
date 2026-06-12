@@ -24,7 +24,7 @@ docs/               Product plan and engineering workflow
 
 ```bash
 cd frontend
-bun install
+bun install --omit optional
 bun run dev
 ```
 

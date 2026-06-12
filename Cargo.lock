@@ -1997,6 +1997,7 @@ dependencies = [
 name = "query-engine-wasm"
 version = "0.1.0"
 dependencies = [
+ "csv",
  "datafusion",
  "getrandom 0.3.4",
  "js-sys",

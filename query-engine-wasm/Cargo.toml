@@ -8,6 +8,7 @@ description = "Rust WebAssembly query engine bindings for QueryFolio"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+csv = "1.4.0"
 # DataFusion 53.1.0 compiles for wasm32-unknown-unknown with the minimal SQL feature set.
 datafusion = { version = "53.1.0", default-features = false, features = ["sql"] }
 getrandom = { version = "0.3.4", features = ["wasm_js"] }

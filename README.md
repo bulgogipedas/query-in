@@ -1,6 +1,6 @@
-# Query In
+# QueryFolio
 
-Query In is a browser-based CSV query engine and data engineering portfolio. It is designed as a working product: visitors can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
+QueryFolio is a browser-based CSV query engine and data engineering portfolio. It is designed as a working product: visitors can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
 
 > Your data stays in your browser. Your queries run at native speed.
 
@@ -36,7 +36,13 @@ cargo run -p backend
 cargo test --workspace
 ```
 
-The frontend development server runs on Vite's default port. The backend listens on `127.0.0.1:3001` and exposes `GET /api/health`.
+The frontend development server runs on Vite's default port. The backend listens on `127.0.0.1:3001` by default and exposes `GET /api/health`.
+
+You can also run both services through Podman Compose:
+
+```bash
+podman compose up
+```
 
 ## GitHub Workflow
 

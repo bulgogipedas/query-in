@@ -1,0 +1,33 @@
+services:
+  frontend:
+    image: oven/bun:1
+    working_dir: /app/frontend
+    command: sh -lc "bun install && bun run dev --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - frontend-node-modules:/app/frontend/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    image: rust:1.91
+    working_dir: /app
+    command: cargo run -p backend
+    environment:
+      QUERYFOLIO_BACKEND_ADDR: 0.0.0.0:3001
+      RUST_LOG: info
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - cargo-registry:/usr/local/cargo/registry
+      - cargo-git:/usr/local/cargo/git
+      - target-cache:/app/target
+
+volumes:
+  frontend-node-modules:
+  cargo-registry:
+  cargo-git:
+  target-cache:

@@ -1,4 +1,4 @@
-use std::{net::SocketAddr, time::Instant};
+use std::{env, error::Error, net::SocketAddr, time::Instant};
 
 use axum::{Json, Router, extract::State, routing::get};
 use serde::Serialize;
@@ -14,11 +14,11 @@ struct AppState {
 struct HealthResponse {
     status: &'static str,
     version: &'static str,
-    uptime_seconds: u64,
+    uptime: u64,
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), Box<dyn Error>> {
     let state = AppState {
         started_at: Instant::now(),
         version: env!("CARGO_PKG_VERSION"),
@@ -29,19 +29,21 @@ async fn main() {
         .layer(CorsLayer::permissive())
         .with_state(state);
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3001));
-    let listener = tokio::net::TcpListener::bind(addr)
-        .await
-        .expect("bind backend listener");
+    let addr = env::var("QUERYFOLIO_BACKEND_ADDR")
+        .unwrap_or_else(|_| "127.0.0.1:3001".to_owned())
+        .parse::<SocketAddr>()?;
+    let listener = tokio::net::TcpListener::bind(addr).await?;
 
-    println!("Query In backend listening on http://{addr}");
-    axum::serve(listener, app).await.expect("serve backend");
+    println!("QueryFolio backend listening on http://{addr}");
+    axum::serve(listener, app).await?;
+
+    Ok(())
 }
 
 async fn health(State(state): State<AppState>) -> Json<HealthResponse> {
     Json(HealthResponse {
         status: "ok",
         version: state.version,
-        uptime_seconds: state.started_at.elapsed().as_secs(),
+        uptime: state.started_at.elapsed().as_secs(),
     })
 }

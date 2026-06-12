@@ -1,6 +1,6 @@
 # GitHub Workflow
 
-Query In uses an issue-first, pull-request-driven workflow so the portfolio history is reviewable and professional.
+QueryFolio uses an issue-first, pull-request-driven workflow so the portfolio history is reviewable and professional.
 
 ## Rules
 
@@ -14,7 +14,7 @@ Query In uses an issue-first, pull-request-driven workflow so the portfolio hist
 
 ## Bootstrap Tracking
 
-The initial bootstrap work is tracked by Issue #1: `Bootstrap Query In monorepo foundation`.
+The initial bootstrap work is tracked by Issue #1: `Bootstrap QueryFolio monorepo foundation`.
 
 The initial branch is `bootstrap/monorepo-foundation`.
 

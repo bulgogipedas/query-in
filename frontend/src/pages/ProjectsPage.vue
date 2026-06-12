@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const projects = [
   {
-    name: 'Query In',
+    name: 'QueryFolio',
     description: 'A browser-based CSV query engine and data engineering portfolio built with Rust, WASM, Vue, and Axum.',
     stack: ['Rust', 'WASM', 'Vue', 'Axum', 'SQL'],
   },

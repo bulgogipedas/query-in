@@ -2003,6 +2003,7 @@ dependencies = [
  "js-sys",
  "serde",
  "serde-wasm-bindgen",
+ "sqlparser",
  "wasm-bindgen",
 ]
 

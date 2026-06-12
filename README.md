@@ -38,6 +38,13 @@ cargo test --workspace
 
 The frontend development server runs on Vite's default port. The backend listens on `127.0.0.1:3001` by default and exposes `GET /api/health`.
 
+Verify the WebAssembly crate setup with:
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo check -p query-engine-wasm --target wasm32-unknown-unknown
+```
+
 You can also run both services through Podman Compose:
 
 ```bash

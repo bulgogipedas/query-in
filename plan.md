@@ -30,7 +30,7 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 2 — WASM Engine
 
-- [ ] `query-engine-wasm` crate with wasm-bindgen setup
+- [x] `query-engine-wasm` crate with wasm-bindgen setup
 - [ ] DataFusion dependency compiled to `wasm32-unknown-unknown` target
 - [ ] `QueryEngine::register_csv(name, bytes)` returning inferred schema
 - [ ] `QueryEngine::execute(sql)` returning `QueryResult` with rows and `elapsed_ms`

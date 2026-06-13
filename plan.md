@@ -36,7 +36,7 @@ docs/               Supporting product and workflow documentation
 - [x] `QueryEngine::execute(sql)` returning `QueryResult` with rows and `elapsed_ms`
 - [x] `wasm-pack build` succeeds, output under 5MB
 - [x] `query.worker.ts` Web Worker wrapping WASM calls
-- [ ] `useQueryEngine` composable with Worker message passing
+- [x] `useQueryEngine` composable with Worker message passing
 - [ ] Integration test: upload sample CSV, run SELECT, verify results
 
 ## Phase 3 — Query UI

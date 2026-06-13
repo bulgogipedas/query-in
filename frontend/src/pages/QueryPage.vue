@@ -3,10 +3,12 @@ import { FileUp, ListTree, Play, TableProperties } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import FileDropzone, { type CsvFileSelection } from '../components/query/FileDropzone.vue'
 import SchemaViewer from '../components/query/SchemaViewer.vue'
+import SqlEditor from '../components/query/SqlEditor.vue'
 import { useQueryEngine } from '../composables/useQueryEngine'
 import type { RegisteredCsvSchema } from '../workers/queryWorkerProtocol'
 
 const selectedFiles = ref<CsvFileSelection[]>([])
+const sqlQuery = ref('select *\nfrom uploaded_csv\nlimit 100;')
 const schemaEntries = ref<SchemaEntry[]>([])
 const schemaError = ref<string | null>(null)
 const isRegisteringSchemas = ref(false)
@@ -55,6 +57,7 @@ async function registerSchemas(files: CsvFileSelection[]) {
       const schema = await queryEngine.registerCsv(tableName, await file.file.arrayBuffer())
       reservedNames.add(tableName)
       schemaEntries.value = [...schemaEntries.value, { fileId: file.id, schema }]
+      applyDefaultSqlForTable(tableName)
     }
   } catch (error) {
     schemaError.value = error instanceof Error ? error.message : 'CSV schema inference failed.'
@@ -90,6 +93,12 @@ function tableNameForFile(file: CsvFileSelection, reservedNames: Set<string>) {
 
   return `${tableName}_${suffix}`
 }
+
+function applyDefaultSqlForTable(tableName: string) {
+  if (sqlQuery.value.includes('uploaded_csv')) {
+    sqlQuery.value = `select *\nfrom ${tableName}\nlimit 100;`
+  }
+}
 </script>
 
 <template>
@@ -116,9 +125,7 @@ function tableNameForFile(file: CsvFileSelection, reservedNames: Set<string>) {
           <Play class="size-5 text-[#00d9ff]" aria-hidden="true" />
           <h2>SQL Editor</h2>
         </div>
-        <pre class="code-surface"><code>select *
-from {{ selectedSchemas[0]?.name || 'uploaded_csv' }}
-limit 100;</code></pre>
+        <SqlEditor v-model="sqlQuery" :schemas="selectedSchemas" />
       </section>
     </div>
 

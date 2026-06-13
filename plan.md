@@ -43,7 +43,7 @@ docs/               Supporting product and workflow documentation
 
 - [x] `FileDropzone.vue` with drag and drop, multi-file support, and 50MB limit
 - [x] `SchemaViewer.vue` with inferred types and null count
-- [ ] `SqlEditor.vue` with CodeMirror 6 SQL mode and column autocomplete
+- [x] `SqlEditor.vue` with CodeMirror 6 SQL mode and column autocomplete
 - [ ] `ResultTable.vue` virtualized with `@tanstack/vue-virtual`
 - [ ] Export results to CSV and JSON
 - [ ] `useQueryHistory` composable using localStorage with max 50 entries

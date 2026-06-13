@@ -9,6 +9,7 @@ Query In is a browser-based CSV query engine and data engineering portfolio. It 
 - Frontend: Vue 3, Vite, TypeScript, Tailwind CSS v4, Bun
 - Backend: Rust, Axum, Tokio
 - WASM: Rust, wasm-bindgen, Apache DataFusion 53.1.0 integration
+- Containers: Podman, Podman Compose, and future production Containerfile
 - Workflow: GitHub issues, focused branches, reviewed pull requests
 
 ## Repository Layout
@@ -60,6 +61,8 @@ You can also run both services through Podman Compose:
 ```bash
 podman compose up
 ```
+
+Production container work should use `Containerfile` and Podman commands. Docker and Docker Compose are not part of the project workflow.
 
 ## GitHub Workflow
 

@@ -25,3 +25,4 @@ Query In uses a high-contrast developer-tooling interface: near-black canvas, da
 - Show actual SQL and product UI surfaces instead of abstract illustrations.
 - Keep button radius at 8px and content surfaces at 12px.
 - Avoid secondary brand accents, gradients, decorative orbs, and drop shadows.
+- Future WebGL or canvas work should use black/electric-yellow product surfaces, code-console motion, and subtle technical texture instead of violet/cyan gradients.

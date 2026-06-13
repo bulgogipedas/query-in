@@ -16,7 +16,7 @@ services:
     working_dir: /app
     command: cargo run -p backend
     environment:
-      QUERYFOLIO_BACKEND_ADDR: 0.0.0.0:3001
+      QUERY_IN_BACKEND_ADDR: 0.0.0.0:3001
       RUST_LOG: info
     ports:
       - "3001:3001"

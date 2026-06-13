@@ -30,8 +30,8 @@ Query In is a portfolio project that behaves like a real product. Visitors can u
 1. Foundation: monorepo, documentation, frontend routes, backend health endpoint, and WASM placeholder API.
 2. WASM engine: DataFusion integration, CSV registration, basic SQL execution, and worker bridge.
 3. Query UI: file dropzone, schema viewer, CodeMirror SQL editor, result table, export, and query history.
-4. Portfolio polish: WebGL or canvas hero, responsive UI, projects page, about page, and SEO metadata.
-5. Deployment: production build pipeline, static frontend serving, HTTPS, caching, and performance audit.
+4. Portfolio polish: black/electric-yellow WebGL or canvas hero, responsive UI, projects page, about page, and SEO metadata.
+5. Deployment: Podman-based production build pipeline, static frontend serving, HTTPS, caching, and performance audit.
 
 ## Performance Targets
 
@@ -46,7 +46,7 @@ Query In is a portfolio project that behaves like a real product. Visitors can u
 - DataFusion may produce a large WASM binary.
 - Async query execution may need browser-specific handling.
 - Large CSV files can overload browser memory without limits.
-- WebGL visual polish needs a graceful fallback.
+- WebGL visual polish must stay aligned with the black canvas and electric-yellow product UI direction and needs a graceful fallback.
 
 ## Mitigations
 
@@ -54,3 +54,4 @@ Query In is a portfolio project that behaves like a real product. Visitors can u
 - Run query work in Web Workers.
 - Apply client-side file size limits and batched result rendering.
 - Provide a non-WebGL visual fallback for unsupported browsers.
+- Use Containerfile, Podman, and Podman Compose for container workflows instead of Docker tooling.

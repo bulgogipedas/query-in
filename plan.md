@@ -26,7 +26,7 @@ docs/               Supporting product and workflow documentation
 - [x] Axum skeleton with `GET /api/health` returning `{ status, version, uptime }`
 - [x] Vue Router with 4 routes: `/`, `/query`, `/projects`, `/about`
 - [x] Navbar and Footer components
-- [x] Docker Compose for local dev
+- [x] Podman Compose for local dev
 
 ## Phase 2 — WASM Engine
 
@@ -52,8 +52,8 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 4 — UI & Pages
 
-- [ ] `WebGLCanvas.vue` animated noise gradient shader using violet and cyan
-- [ ] Hero section with WebGL background, headline, and CTA button
+- [ ] `WebGLCanvas.vue` black/electric-yellow product surface with code-console motion
+- [ ] Hero section with black/yellow WebGL background, headline, and CTA button
 - [ ] Projects page fetching from `GET /api/projects`
 - [ ] About page with skills matrix
 - [ ] Page transitions with Vue `<Transition>`
@@ -61,10 +61,10 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 5 — Deploy
 
-- [ ] Multi-stage Dockerfile: WASM build, frontend build, backend build, runtime
+- [ ] Multi-stage Containerfile: WASM build, frontend build, backend build, runtime
 - [ ] Caddy config for reverse proxy and HTTPS
 - [ ] GitHub Actions CI: lint and test on every PR
-- [ ] GitHub Actions CD: Docker build and push on merge to main
+- [ ] GitHub Actions CD: Podman build and push on merge to main
 - [ ] Lighthouse CI asserting Performance >= 90
 
 ## Engineering Rules
@@ -75,4 +75,6 @@ docs/               Supporting product and workflow documentation
 - Keep Rust formatted with rustfmt and clean under clippy.
 - Keep TypeScript strict and avoid `any`.
 - Run WASM work in a Web Worker, not on the main thread.
+- Use Podman and Podman Compose for container workflows.
+- Keep visual work aligned with the black canvas and electric-yellow UI direction in `docs/ui-direction.md`.
 - Commit after each completed goal with a Conventional Commit message that references the GitHub issue.

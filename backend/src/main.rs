@@ -29,7 +29,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .layer(CorsLayer::permissive())
         .with_state(state);
 
-    let addr = env::var("QUERYFOLIO_BACKEND_ADDR")
+    let addr = env::var("QUERY_IN_BACKEND_ADDR")
         .unwrap_or_else(|_| "127.0.0.1:3001".to_owned())
         .parse::<SocketAddr>()?;
     let listener = tokio::net::TcpListener::bind(addr).await?;

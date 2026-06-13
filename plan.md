@@ -46,7 +46,7 @@ docs/               Supporting product and workflow documentation
 - [x] `SqlEditor.vue` with CodeMirror 6 SQL mode and column autocomplete
 - [x] `ResultTable.vue` virtualized with `@tanstack/vue-virtual`
 - [x] Export results to CSV and JSON
-- [ ] `useQueryHistory` composable using localStorage with max 50 entries
+- [x] `useQueryHistory` composable using localStorage with max 50 entries
 - [x] Query execution time display in milliseconds
 - [x] Error state for invalid SQL
 

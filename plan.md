@@ -52,8 +52,8 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 4 — UI & Pages
 
-- [ ] `WebGLCanvas.vue` black/electric-yellow product surface with code-console motion
-- [ ] Hero section with black/yellow WebGL background, headline, and CTA button
+- [x] `WebGLCanvas.vue` black/electric-yellow product surface with code-console motion
+- [x] Hero section with black/yellow WebGL background, headline, and CTA button
 - [ ] Projects page fetching from `GET /api/projects`
 - [ ] About page with skills matrix
 - [ ] Page transitions with Vue `<Transition>`

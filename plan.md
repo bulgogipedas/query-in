@@ -56,7 +56,7 @@ docs/               Supporting product and workflow documentation
 - [x] Hero section with black/yellow WebGL background, headline, and CTA button
 - [x] Projects page fetching from `GET /api/projects`
 - [x] About page with skills matrix
-- [ ] Page transitions with Vue `<Transition>`
+- [x] Page transitions with Vue `<Transition>`
 - [ ] Mobile responsive at 768px breakpoint
 
 ## Phase 5 — Deploy

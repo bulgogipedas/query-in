@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import { FileUp, Play, TableProperties } from 'lucide-vue-next'
+import { ref } from 'vue'
+import FileDropzone, { type CsvFileSelection } from '../components/query/FileDropzone.vue'
+
+const selectedFiles = ref<CsvFileSelection[]>([])
+
+function handleFilesSelected(files: CsvFileSelection[]) {
+  selectedFiles.value = files
+}
 </script>
 
 <template>
@@ -8,7 +16,7 @@ import { FileUp, Play, TableProperties } from 'lucide-vue-next'
       <p class="eyebrow">Query workspace</p>
       <h1>Upload CSV files, inspect schema, then run SQL.</h1>
       <p>
-        This bootstrap screen reserves the core workflow while the WebAssembly engine and worker integration are built in follow-up issues.
+        This workspace connects the browser query engine to focused UI pieces as the Phase 3 workflow lands.
       </p>
     </div>
 
@@ -18,10 +26,7 @@ import { FileUp, Play, TableProperties } from 'lucide-vue-next'
           <FileUp class="size-5 text-[#00d9ff]" aria-hidden="true" />
           <h2>CSV Input</h2>
         </div>
-        <div class="dropzone">
-          <p class="font-semibold text-white">Drop CSV files here</p>
-          <p class="mt-2 text-sm text-[#8888aa]">Multi-file joins and schema overrides are planned for the query engine milestone.</p>
-        </div>
+        <FileDropzone @files-selected="handleFilesSelected" />
       </section>
 
       <section class="panel">
@@ -30,7 +35,7 @@ import { FileUp, Play, TableProperties } from 'lucide-vue-next'
           <h2>SQL Editor</h2>
         </div>
         <pre class="code-surface"><code>select *
-from uploaded_csv
+from {{ selectedFiles[0]?.name.replace(/\.csv$/i, '') || 'uploaded_csv' }}
 limit 100;</code></pre>
       </section>
     </div>

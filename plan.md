@@ -41,7 +41,7 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 3 — Query UI
 
-- [ ] `FileDropzone.vue` with drag and drop, multi-file support, and 50MB limit
+- [x] `FileDropzone.vue` with drag and drop, multi-file support, and 50MB limit
 - [ ] `SchemaViewer.vue` with inferred types and null count
 - [ ] `SqlEditor.vue` with CodeMirror 6 SQL mode and column autocomplete
 - [ ] `ResultTable.vue` virtualized with `@tanstack/vue-virtual`

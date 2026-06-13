@@ -3,6 +3,7 @@ node_modules/
 
 # Frontend build output
 frontend/dist/
+.lighthouseci/
 
 # Rust build output
 target/

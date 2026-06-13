@@ -65,7 +65,7 @@ docs/               Supporting product and workflow documentation
 - [x] Caddy config for reverse proxy and HTTPS
 - [x] GitHub Actions CI: lint and test on every PR
 - [x] GitHub Actions CD: Podman build and push on merge to main
-- [ ] Lighthouse CI asserting Performance >= 90
+- [x] Lighthouse CI asserting Performance >= 90
 
 ## Engineering Rules
 

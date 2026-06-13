@@ -33,7 +33,7 @@ jobs:
 
       - name: Typecheck
         working-directory: frontend
-        run: bunx vue-tsc -b
+        run: bun run typecheck
 
       - name: Test
         working-directory: frontend

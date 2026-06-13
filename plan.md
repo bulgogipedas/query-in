@@ -54,7 +54,7 @@ docs/               Supporting product and workflow documentation
 
 - [x] `WebGLCanvas.vue` black/electric-yellow product surface with code-console motion
 - [x] Hero section with black/yellow WebGL background, headline, and CTA button
-- [ ] Projects page fetching from `GET /api/projects`
+- [x] Projects page fetching from `GET /api/projects`
 - [ ] About page with skills matrix
 - [ ] Page transitions with Vue `<Transition>`
 - [ ] Mobile responsive at 768px breakpoint

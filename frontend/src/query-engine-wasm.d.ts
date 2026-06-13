@@ -5,7 +5,9 @@ declare module '@query-in/query-engine-wasm' {
     RegisteredCsvSchema,
   } from './workers/queryWorkerProtocol'
 
-  export default function init(): Promise<unknown>
+  type WasmInitInput = RequestInfo | URL | WebAssembly.Module | BufferSource
+
+  export default function init(options?: WasmInitInput | { module_or_path?: WasmInitInput }): Promise<unknown>
 
   export class QueryEngine {
     constructor()

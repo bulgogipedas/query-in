@@ -1,8 +1,8 @@
-# QueryFolio Project Plan
+# Query In Project Plan
 
 ## Vision
 
-QueryFolio is a portfolio project that behaves like a real product. Visitors can upload CSV files, inspect inferred schemas, and run SQL queries directly in the browser. The core promise is privacy and speed: data stays local, while the query engine targets native-like performance through Rust and WebAssembly.
+Query In is a portfolio project that behaves like a real product. Visitors can upload CSV files, inspect inferred schemas, and run SQL queries directly in the browser. The core promise is privacy and speed: data stays local, while the query engine targets native-like performance through Rust and WebAssembly.
 
 ## Product Goals
 

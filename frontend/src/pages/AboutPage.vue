@@ -4,7 +4,7 @@
       <p class="eyebrow">About</p>
       <h1>Built as a product, presented as a portfolio.</h1>
       <p>
-        QueryFolio is designed to demonstrate practical data engineering judgment through a usable CSV analysis tool, clear system boundaries, and production-oriented documentation.
+        Query In is designed to demonstrate practical data engineering judgment through a usable CSV analysis tool, clear system boundaries, and production-oriented documentation.
       </p>
     </div>
 

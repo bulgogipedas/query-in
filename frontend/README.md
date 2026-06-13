@@ -1,6 +1,6 @@
-# QueryFolio Frontend
+# Query In Frontend
 
-Vue 3, Vite, TypeScript, and Tailwind CSS v4 power the QueryFolio browser interface.
+Vue 3, Vite, TypeScript, and Tailwind CSS v4 power the Query In browser interface.
 
 ## Commands
 

@@ -34,7 +34,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .parse::<SocketAddr>()?;
     let listener = tokio::net::TcpListener::bind(addr).await?;
 
-    println!("QueryFolio backend listening on http://{addr}");
+    println!("Query In backend listening on http://{addr}");
     axum::serve(listener, app).await?;
 
     Ok(())

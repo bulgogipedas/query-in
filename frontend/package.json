@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "rm -rf node_modules/fsevents && vite",
     "build": "rm -rf node_modules/fsevents && vue-tsc -b && vite build",
-    "preview": "rm -rf node_modules/fsevents && vite preview"
+    "preview": "rm -rf node_modules/fsevents && vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -25,6 +26,7 @@
     "rollup": "^4.61.1",
     "typescript": "^5",
     "vite": "6.0.0",
+    "vitest": "3.2.6",
     "vue-tsc": "^2"
   },
   "overrides": {

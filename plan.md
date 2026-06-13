@@ -1,6 +1,6 @@
-# QueryFolio Project Plan
+# Query In Project Plan
 
-QueryFolio is a browser-based CSV query engine and data engineering portfolio app. The product goal is a working portfolio experience where visitors can upload CSV files, query them with SQL in the browser, and review supporting data engineering projects.
+Query In is a browser-based CSV query engine and data engineering portfolio app. The product goal is a working portfolio experience where visitors can upload CSV files, query them with SQL in the browser, and review supporting data engineering projects.
 
 ## Stack
 
@@ -37,7 +37,7 @@ docs/               Supporting product and workflow documentation
 - [x] `wasm-pack build` succeeds, output under 5MB
 - [x] `query.worker.ts` Web Worker wrapping WASM calls
 - [x] `useQueryEngine` composable with Worker message passing
-- [ ] Integration test: upload sample CSV, run SELECT, verify results
+- [x] Integration test: upload sample CSV, run SELECT, verify results
 
 ## Phase 3 — Query UI
 

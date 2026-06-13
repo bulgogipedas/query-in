@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router'
         <span class="grid size-9 place-items-center rounded bg-[#00d9ff] text-[#0a0a0f]">
           <Database class="size-5" aria-hidden="true" />
         </span>
-        <span>QueryFolio</span>
+        <span>Query In</span>
       </RouterLink>
 
       <div class="flex items-center gap-2 text-sm text-[#8888aa]">

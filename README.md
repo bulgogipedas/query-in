@@ -1,6 +1,6 @@
-# QueryFolio
+# Query In
 
-QueryFolio is a browser-based CSV query engine and data engineering portfolio. It is designed as a working product: visitors can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
+Query In is a browser-based CSV query engine and data engineering portfolio. It is designed as a working product: visitors can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
 
 > Your data stays in your browser. Your queries run at native speed.
 

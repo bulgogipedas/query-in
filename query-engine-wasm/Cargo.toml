@@ -2,7 +2,7 @@
 name = "query-engine-wasm"
 version = "0.1.0"
 edition = "2024"
-description = "Rust WebAssembly query engine bindings for QueryFolio"
+description = "Rust WebAssembly query engine bindings for Query In"
 license.workspace = true
 repository.workspace = true
 

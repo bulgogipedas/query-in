@@ -27,7 +27,7 @@ const highlights = [
       <div class="max-w-3xl">
         <p class="eyebrow">Browser-based CSV query engine</p>
         <h1 class="mt-5 max-w-3xl font-display text-5xl font-semibold leading-tight md:text-7xl">
-          QueryFolio
+          Query In
         </h1>
         <p class="mt-6 max-w-2xl text-xl leading-8 text-[#c7c7dd]">
           Your data stays in your browser. Your queries run at native speed.

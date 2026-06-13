@@ -64,7 +64,7 @@ docs/               Supporting product and workflow documentation
 - [x] Multi-stage Containerfile: WASM build, frontend build, backend build, runtime
 - [x] Caddy config for reverse proxy and HTTPS
 - [x] GitHub Actions CI: lint and test on every PR
-- [ ] GitHub Actions CD: Podman build and push on merge to main
+- [x] GitHub Actions CD: Podman build and push on merge to main
 - [ ] Lighthouse CI asserting Performance >= 90
 
 ## Engineering Rules

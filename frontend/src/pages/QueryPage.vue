@@ -2,16 +2,20 @@
 import { FileUp, ListTree, Play, TableProperties } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import FileDropzone, { type CsvFileSelection } from '../components/query/FileDropzone.vue'
+import ResultTable from '../components/query/ResultTable.vue'
 import SchemaViewer from '../components/query/SchemaViewer.vue'
 import SqlEditor from '../components/query/SqlEditor.vue'
 import { useQueryEngine } from '../composables/useQueryEngine'
-import type { RegisteredCsvSchema } from '../workers/queryWorkerProtocol'
+import type { QueryResult, RegisteredCsvSchema } from '../workers/queryWorkerProtocol'
 
 const selectedFiles = ref<CsvFileSelection[]>([])
 const sqlQuery = ref('select *\nfrom uploaded_csv\nlimit 100;')
 const schemaEntries = ref<SchemaEntry[]>([])
 const schemaError = ref<string | null>(null)
+const queryError = ref<string | null>(null)
+const queryResult = ref<QueryResult | null>(null)
 const isRegisteringSchemas = ref(false)
+const isExecutingQuery = ref(false)
 const queryEngine = useQueryEngine()
 
 let initializePromise: Promise<void> | null = null
@@ -99,6 +103,21 @@ function applyDefaultSqlForTable(tableName: string) {
     sqlQuery.value = `select *\nfrom ${tableName}\nlimit 100;`
   }
 }
+
+async function runQuery() {
+  queryError.value = null
+  isExecutingQuery.value = true
+
+  try {
+    await ensureQueryEngineReady()
+    queryResult.value = await queryEngine.execute(sqlQuery.value)
+  } catch (error) {
+    queryResult.value = null
+    queryError.value = error instanceof Error ? error.message : 'SQL query failed.'
+  } finally {
+    isExecutingQuery.value = false
+  }
+}
 </script>
 
 <template>
@@ -121,9 +140,21 @@ function applyDefaultSqlForTable(tableName: string) {
       </section>
 
       <section class="panel">
-        <div class="panel-title">
-          <Play class="size-5 text-[#00d9ff]" aria-hidden="true" />
-          <h2>SQL Editor</h2>
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="panel-title mb-0">
+            <Play class="size-5 text-[#00d9ff]" aria-hidden="true" />
+            <h2>SQL Editor</h2>
+          </div>
+          <button
+            type="button"
+            class="primary-action"
+            :disabled="isExecutingQuery || isRegisteringSchemas || selectedSchemas.length === 0"
+            :class="isExecutingQuery || isRegisteringSchemas || selectedSchemas.length === 0 ? 'cursor-not-allowed opacity-60' : ''"
+            @click="runQuery"
+          >
+            <Play class="size-4" aria-hidden="true" />
+            Run Query
+          </button>
         </div>
         <SqlEditor v-model="sqlQuery" :schemas="selectedSchemas" />
       </section>
@@ -142,7 +173,7 @@ function applyDefaultSqlForTable(tableName: string) {
         <TableProperties class="size-5 text-[#00d9ff]" aria-hidden="true" />
         <h2>Results</h2>
       </div>
-      <div class="result-empty">Query results will appear after SQL execution is connected to the editor.</div>
+      <ResultTable :result="queryResult" :is-loading="isExecutingQuery" :error="queryError" />
     </section>
   </section>
 </template>

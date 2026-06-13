@@ -62,7 +62,14 @@ You can also run both services through Podman Compose:
 podman compose up
 ```
 
-Production container work should use `Containerfile` and Podman commands. Docker and Docker Compose are not part of the project workflow.
+Production container work uses `Containerfile` and Podman commands. Docker and Docker Compose are not part of the project workflow.
+
+```bash
+podman build -t query-in:local -f Containerfile .
+podman run --rm -p 8080:8080 query-in:local
+```
+
+The runtime image starts the Axum API on `127.0.0.1:3001` and serves the built frontend through Caddy on `:8080`. Set `QUERY_IN_SITE_ADDRESS` to a real production domain, for example `query-in.example.com`, when deploying behind public DNS so Caddy can manage HTTPS automatically.
 
 ## GitHub Workflow
 

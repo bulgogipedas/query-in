@@ -61,8 +61,8 @@ docs/               Supporting product and workflow documentation
 
 ## Phase 5 — Deploy
 
-- [ ] Multi-stage Containerfile: WASM build, frontend build, backend build, runtime
-- [ ] Caddy config for reverse proxy and HTTPS
+- [x] Multi-stage Containerfile: WASM build, frontend build, backend build, runtime
+- [x] Caddy config for reverse proxy and HTTPS
 - [ ] GitHub Actions CI: lint and test on every PR
 - [ ] GitHub Actions CD: Podman build and push on merge to main
 - [ ] Lighthouse CI asserting Performance >= 90

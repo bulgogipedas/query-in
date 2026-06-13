@@ -27,9 +27,20 @@ jobs:
         with:
           bun-version: 1.3.3
 
+      - name: Set up Rust for WASM package
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
       - name: Install dependencies
         working-directory: frontend
         run: bun install --frozen-lockfile
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack --locked
+
+      - name: Build WASM package
+        run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh
 
       - name: Build frontend
         working-directory: frontend

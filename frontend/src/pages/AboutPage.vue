@@ -1,24 +1,24 @@
 <script setup lang="ts">
 const skillGroups = [
   {
-    title: 'Systems Engineering',
-    summary: 'Backend and runtime work focused on clear boundaries, observable APIs, and practical performance.',
-    skills: ['Rust', 'Axum', 'Tokio', 'WebAssembly', 'Web Workers'],
+    title: 'Browser-Native Processing',
+    summary: 'Query In uses a local execution model so teams can analyze CSV files without uploading raw data to a remote service.',
+    skills: ['Local execution', 'WebAssembly', 'Web Workers', 'Fast startup', 'Large files'],
   },
   {
-    title: 'Data Engineering',
-    summary: 'Analytical workflows shaped around local files, schema clarity, and SQL-first exploration.',
-    skills: ['CSV parsing', 'Schema inference', 'SQL', 'Apache Arrow', 'DataFusion roadmap'],
+    title: 'SQL Analysis Flow',
+    summary: 'The workspace is designed for analysts and operators who need schema visibility, repeatable queries, and exportable answers.',
+    skills: ['CSV parsing', 'Schema inference', 'SQL editor', 'Query history', 'CSV and JSON export'],
   },
   {
-    title: 'Frontend Product',
-    summary: 'Browser interfaces that expose technical depth through usable, polished product surfaces.',
-    skills: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'CodeMirror', 'Responsive UI'],
+    title: 'Privacy Controls',
+    summary: 'Sensitive files remain on the device by default, reducing the risk and friction of quick data inspection.',
+    skills: ['No file uploads', 'Device-local data', 'Clear limits', 'Explicit exports', 'Private sessions'],
   },
   {
-    title: 'Delivery',
-    summary: 'Reviewable engineering habits that make portfolio work easy to inspect and extend.',
-    skills: ['GitHub issues', 'Pull requests', 'Podman', 'CI planning', 'Documentation'],
+    title: 'Deployment Ready',
+    summary: 'The product is packaged for teams that want a simple hosted entry point backed by observable API health checks.',
+    skills: ['Podman runtime', 'Caddy proxy', 'Health endpoint', 'CI checks', 'Performance gate'],
   },
 ]
 </script>
@@ -26,10 +26,10 @@ const skillGroups = [
 <template>
   <section class="page-shell">
     <div class="page-heading">
-      <p class="eyebrow">About</p>
-      <h1>Built as a product, presented as a portfolio.</h1>
+      <p class="eyebrow">Platform</p>
+      <h1>Private CSV analysis for teams that need answers now.</h1>
       <p>
-        Query In is designed to demonstrate practical data engineering judgment through a usable CSV analysis tool, clear system boundaries, and production-oriented documentation.
+        Query In gives analysts, founders, finance teams, and operators a secure workspace for ad hoc CSV exploration without forcing every question through a warehouse or shared spreadsheet.
       </p>
     </div>
 

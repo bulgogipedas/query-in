@@ -65,18 +65,23 @@ async fn projects() -> Json<Vec<ProjectResponse>> {
 fn project_catalog() -> Vec<ProjectResponse> {
     vec![
         ProjectResponse {
-            name: "Query In",
+            name: "Operations Review",
             slug: "query-in",
-            summary: "A browser-based CSV query engine that keeps analysis local while running SQL through a Rust and WebAssembly core.",
-            status: "In progress",
-            stack: vec!["Rust", "WebAssembly", "Vue", "Axum", "SQL"],
+            summary: "Inspect exports from billing, support, product, or CRM tools without uploading sensitive files into another SaaS system.",
+            status: "Ready",
+            stack: vec!["Private CSVs", "SQL", "Schema inference", "Export"],
         },
         ProjectResponse {
-            name: "Local Query Engine",
+            name: "Pre-Warehouse Triage",
             slug: "local-query-engine",
-            summary: "The planned DataFusion-powered execution layer for joins, aggregates, schema inference, and browser-safe analytical workflows.",
-            status: "Roadmap",
-            stack: vec!["DataFusion", "Arrow", "wasm-bindgen", "Web Worker"],
+            summary: "Validate file shape, inspect nulls, and answer quick questions before deciding whether data belongs in the warehouse.",
+            status: "Ready",
+            stack: vec![
+                "Schema checks",
+                "Local compute",
+                "Query history",
+                "Results table",
+            ],
         },
     ]
 }

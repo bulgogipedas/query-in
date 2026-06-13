@@ -5,18 +5,18 @@ import WebGLCanvas from '../components/visual/WebGLCanvas.vue'
 
 const highlights = [
   {
-    title: 'Native Speed',
-    description: 'The query engine is designed to run in WebAssembly instead of sending CSV data to a server.',
+    title: 'Instant Local Queries',
+    description: 'Open large CSV files and run SQL in the browser without waiting on uploads or warehouse setup.',
     icon: Zap,
   },
   {
-    title: 'Privacy First',
-    description: 'Uploaded files stay on the visitor device during browser-based analysis.',
+    title: 'Private by Default',
+    description: 'Files stay on the user device, giving teams a safer way to inspect sensitive operational data.',
     icon: Lock,
   },
   {
-    title: 'Real SQL',
-    description: 'The roadmap targets Apache DataFusion for practical joins, aggregates, and analytical SQL.',
+    title: 'Workflow Ready',
+    description: 'Schema inference, query history, and result exports keep lightweight analysis moving end to end.',
     icon: Braces,
   },
 ]
@@ -26,19 +26,20 @@ const highlights = [
   <section class="hero-band">
     <div class="mx-auto grid min-h-[calc(100svh-73px)] w-full max-w-7xl content-center gap-10 px-5 py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:items-center">
       <div class="max-w-3xl">
-        <p class="eyebrow">Browser-based CSV query engine</p>
+        <p class="eyebrow">Private CSV analytics workspace</p>
         <h1 class="mt-5 max-w-3xl font-display text-5xl font-bold leading-tight md:text-7xl">
           Query In
         </h1>
         <p class="mt-6 max-w-2xl text-xl leading-8 text-[#cccccc]">
-          Your data stays in your browser. Your queries run at native speed.
+          Turn CSV files into answers with SQL that runs directly in the browser.
+          No upload queue, no warehouse dependency, no data leaving the device.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <RouterLink class="primary-action" to="/query">
-            Try the Query Engine
+            Start Querying
             <ArrowRight class="size-4" aria-hidden="true" />
           </RouterLink>
-          <RouterLink class="secondary-action" to="/projects">View Projects</RouterLink>
+          <RouterLink class="secondary-action" to="/projects">Explore Use Cases</RouterLink>
         </div>
       </div>
 

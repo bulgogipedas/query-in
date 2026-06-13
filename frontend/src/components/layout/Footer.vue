@@ -7,7 +7,7 @@ import { Github, Linkedin } from 'lucide-vue-next'
     <div
       class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-8 text-sm text-[#888888] md:flex-row md:items-center md:justify-between"
     >
-      <p>Query In keeps CSV exploration local, fast, and portfolio-ready.</p>
+      <p>Private CSV analysis, running locally in the browser.</p>
       <div class="flex gap-3">
         <a class="icon-link" href="https://github.com/bulgogipedas/query-in" aria-label="GitHub repository">
           <Github class="size-5" aria-hidden="true" />

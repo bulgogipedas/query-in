@@ -18,14 +18,14 @@ onMounted(async () => {
     const response = await fetch('/api/projects')
 
     if (!response.ok) {
-      throw new Error(`Project metadata request failed with ${response.status}`)
+      throw new Error(`Use case request failed with ${response.status}`)
     }
 
     projects.value = await response.json() as Project[]
   } catch (error) {
     errorMessage.value = error instanceof Error
       ? error.message
-      : 'Project metadata could not be loaded.'
+      : 'Use case data could not be loaded.'
   } finally {
     isLoading.value = false
   }
@@ -35,17 +35,17 @@ onMounted(async () => {
 <template>
   <section class="page-shell">
     <div class="page-heading">
-      <p class="eyebrow">Portfolio</p>
-      <h1>Data engineering projects with working demos.</h1>
-      <p>Project metadata is served by the Query In Axum API and rendered by the browser client.</p>
+      <p class="eyebrow">Use cases</p>
+      <h1>Fast answers for teams working with file-based data.</h1>
+      <p>Query In fits the messy middle between spreadsheets and a full analytics stack.</p>
     </div>
 
     <div v-if="isLoading" class="feature-card">
-      <p class="font-mono text-sm text-[#faff69]">Loading project metadata...</p>
+      <p class="font-mono text-sm text-[#faff69]">Loading use cases...</p>
     </div>
 
     <div v-else-if="errorMessage" class="feature-card border-[#faff69]">
-      <p class="font-display text-xl font-bold text-white">Project metadata is unavailable.</p>
+      <p class="font-display text-xl font-bold text-white">Use cases are unavailable.</p>
       <p class="mt-3 font-mono text-sm text-[#cccccc]">{{ errorMessage }}</p>
     </div>
 

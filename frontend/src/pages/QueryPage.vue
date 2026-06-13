@@ -143,10 +143,11 @@ function formatHistoryTimestamp(timestamp: string) {
 <template>
   <section class="page-shell">
     <div class="page-heading">
-      <p class="eyebrow">Query workspace</p>
-      <h1>Upload CSV files, inspect schema, then run SQL.</h1>
+      <p class="eyebrow">Analysis workspace</p>
+      <h1>Query CSV files without moving them out of your browser.</h1>
       <p>
-        This workspace connects the browser query engine to focused UI pieces as the Phase 3 workflow lands.
+        Bring in a file, inspect the schema, run SQL, and export the result set.
+        Query In is built for fast one-off analysis when a full data platform would slow the team down.
       </p>
     </div>
 

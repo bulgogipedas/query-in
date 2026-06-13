@@ -45,7 +45,7 @@ docs/               Supporting product and workflow documentation
 - [x] `SchemaViewer.vue` with inferred types and null count
 - [x] `SqlEditor.vue` with CodeMirror 6 SQL mode and column autocomplete
 - [x] `ResultTable.vue` virtualized with `@tanstack/vue-virtual`
-- [ ] Export results to CSV and JSON
+- [x] Export results to CSV and JSON
 - [ ] `useQueryHistory` composable using localStorage with max 50 entries
 - [x] Query execution time display in milliseconds
 - [x] Error state for invalid SQL

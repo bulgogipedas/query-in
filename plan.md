@@ -34,7 +34,7 @@ docs/               Supporting product and workflow documentation
 - [x] DataFusion dependency compiled to `wasm32-unknown-unknown` target
 - [x] `QueryEngine::register_csv(name, bytes)` returning inferred schema
 - [x] `QueryEngine::execute(sql)` returning `QueryResult` with rows and `elapsed_ms`
-- [ ] `wasm-pack build` succeeds, output under 5MB
+- [x] `wasm-pack build` succeeds, output under 5MB
 - [ ] `query.worker.ts` Web Worker wrapping WASM calls
 - [ ] `useQueryEngine` composable with Worker message passing
 - [ ] Integration test: upload sample CSV, run SELECT, verify results

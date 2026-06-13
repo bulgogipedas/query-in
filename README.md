@@ -47,6 +47,14 @@ cargo check -p query-engine-wasm --target wasm32-unknown-unknown
 
 The WASM crate currently pins DataFusion to 53.1.0 with a minimal SQL feature set and enables `getrandom`'s `wasm_js` feature for browser-compatible `wasm32-unknown-unknown` builds.
 
+Build and size-check the browser package with:
+
+```bash
+WASM_PACK=/path/to/wasm-pack scripts/check-wasm-package.sh
+```
+
+The generated `query-engine-wasm/pkg/` directory is ignored by Git and must stay below 5MB for the current portfolio budget.
+
 You can also run both services through Podman Compose:
 
 ```bash

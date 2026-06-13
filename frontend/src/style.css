@@ -164,6 +164,36 @@ a {
   color: #e6e6e6;
 }
 
+@media (max-width: 768px) {
+  .page-shell {
+    gap: 1rem;
+    padding: 3rem 1rem 4rem;
+  }
+
+  .feature-card,
+  .panel,
+  .dropzone,
+  .result-empty,
+  .code-surface {
+    padding: 1.125rem;
+  }
+
+  .primary-action,
+  .secondary-action {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-link {
+    padding: 0.45rem 0.55rem;
+  }
+
+  .page-heading h1 {
+    font-size: 2.25rem;
+  }
+}
+
 .page-enter-active,
 .page-leave-active {
   transition:

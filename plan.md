@@ -57,7 +57,7 @@ docs/               Supporting product and workflow documentation
 - [x] Projects page fetching from `GET /api/projects`
 - [x] About page with skills matrix
 - [x] Page transitions with Vue `<Transition>`
-- [ ] Mobile responsive at 768px breakpoint
+- [x] Mobile responsive at 768px breakpoint
 
 ## Phase 5 — Deploy
 

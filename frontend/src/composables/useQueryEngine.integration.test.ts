@@ -49,6 +49,11 @@ describe('useQueryEngine', () => {
       ['name', 'Utf8'],
       ['score', 'Int64'],
     ])
+    expect(schema.columns.map((column) => [column.name, column.null_count])).toEqual([
+      ['id', 0],
+      ['name', 0],
+      ['score', 0],
+    ])
     expect(result.rows).toEqual([
       {
         name: 'Ada',

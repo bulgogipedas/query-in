@@ -32,6 +32,7 @@ export interface QueryColumnSchema {
   name: string
   data_type: 'Boolean' | 'Int64' | 'Float64' | 'Utf8'
   nullable: boolean
+  null_count: number
 }
 
 export interface RegisteredCsvSchema {

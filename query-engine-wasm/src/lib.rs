@@ -43,6 +43,7 @@ struct ColumnSchema {
     name: String,
     data_type: String,
     nullable: bool,
+    null_count: usize,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
@@ -192,6 +193,7 @@ fn parse_csv_table(name: &str, data: &[u8]) -> Result<RegisteredCsvTable, String
                 name: name.to_owned(),
                 data_type: "Utf8".to_owned(),
                 nullable: false,
+                null_count: 0,
             })
         })
         .collect::<Result<Vec<_>, _>>()?;
@@ -214,11 +216,13 @@ fn parse_csv_table(name: &str, data: &[u8]) -> Result<RegisteredCsvTable, String
         for (index, column) in columns.iter_mut().enumerate() {
             let Some(value) = record.get(index).map(str::trim) else {
                 column.nullable = true;
+                column.null_count += 1;
                 continue;
             };
 
             if value.is_empty() {
                 column.nullable = true;
+                column.null_count += 1;
                 continue;
             }
 
@@ -561,10 +565,12 @@ mod tests {
         assert!(!schema.columns[0].nullable);
         assert_eq!(schema.columns[1].data_type, "Int64");
         assert!(schema.columns[1].nullable);
+        assert_eq!(schema.columns[1].null_count, 1);
         assert_eq!(schema.columns[2].data_type, "Float64");
         assert_eq!(schema.columns[3].data_type, "Boolean");
         assert_eq!(schema.columns[4].data_type, "Utf8");
         assert!(schema.columns[4].nullable);
+        assert_eq!(schema.columns[4].null_count, 1);
     }
 
     #[test]

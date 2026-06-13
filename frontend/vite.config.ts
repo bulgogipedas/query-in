@@ -21,6 +21,9 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  worker: {
+    format: 'es',
+  },
   test: {
     environment: 'node',
     include: ['src/**/*.test.ts'],

@@ -3,9 +3,9 @@ import { Github, Linkedin } from 'lucide-vue-next'
 </script>
 
 <template>
-  <footer class="border-t border-[#2a2a4a]">
+  <footer class="border-t border-[#2a2a2a]">
     <div
-      class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-8 text-sm text-[#8888aa] md:flex-row md:items-center md:justify-between"
+      class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-8 text-sm text-[#888888] md:flex-row md:items-center md:justify-between"
     >
       <p>Query In keeps CSV exploration local, fast, and portfolio-ready.</p>
       <div class="flex gap-3">

@@ -25,12 +25,12 @@ const autocompleteCompartment = new Compartment()
 const tableNames = computed(() => props.schemas.map((schema) => schema.name))
 
 const sqlHighlightStyle = HighlightStyle.define([
-  { tag: tags.keyword, color: '#00d9ff', fontWeight: '700' },
+  { tag: tags.keyword, color: '#faff69', fontWeight: '700' },
   { tag: tags.string, color: '#a7f3d0' },
   { tag: tags.number, color: '#fbbf24' },
-  { tag: tags.operator, color: '#c7c7dd' },
-  { tag: tags.variableName, color: '#f0f0ff' },
-  { tag: tags.comment, color: '#8888aa', fontStyle: 'italic' },
+  { tag: tags.operator, color: '#cccccc' },
+  { tag: tags.variableName, color: '#ffffff' },
+  { tag: tags.comment, color: '#888888', fontStyle: 'italic' },
 ])
 
 onMounted(() => {
@@ -136,10 +136,10 @@ function completeSql(context: CompletionContext): CompletionResult | null {
 const queryInEditorTheme = EditorView.theme({
   '&': {
     minHeight: '13rem',
-    border: '1px solid #2a2a4a',
+    border: '1px solid #2a2a2a',
     borderRadius: '8px',
-    backgroundColor: '#0f0f23',
-    color: '#f0f0ff',
+    backgroundColor: '#1a1a1a',
+    color: '#ffffff',
     fontSize: '0.92rem',
   },
   '.cm-scroller': {
@@ -151,33 +151,33 @@ const queryInEditorTheme = EditorView.theme({
     padding: '1rem 0.75rem',
   },
   '.cm-gutters': {
-    backgroundColor: '#0b0b19',
-    borderRight: '1px solid #2a2a4a',
-    color: '#686889',
+    backgroundColor: '#121212',
+    borderRight: '1px solid #2a2a2a',
+    color: '#5a5a5a',
   },
   '.cm-activeLineGutter': {
-    backgroundColor: '#14142f',
-    color: '#c7c7dd',
+    backgroundColor: '#242424',
+    color: '#cccccc',
   },
   '.cm-activeLine': {
-    backgroundColor: '#14142f66',
+    backgroundColor: '#24242466',
   },
   '.cm-selectionBackground, &.cm-focused .cm-selectionBackground': {
-    backgroundColor: '#00d9ff40',
+    backgroundColor: '#faff6940',
   },
   '&.cm-focused': {
-    outline: '2px solid #00d9ff66',
+    outline: '2px solid #faff6966',
     outlineOffset: '2px',
   },
   '.cm-tooltip': {
-    border: '1px solid #2a2a4a',
+    border: '1px solid #2a2a2a',
     borderRadius: '8px',
-    backgroundColor: '#101024',
-    color: '#f0f0ff',
+    backgroundColor: '#1a1a1a',
+    color: '#ffffff',
   },
   '.cm-tooltip-autocomplete ul li[aria-selected]': {
-    backgroundColor: '#00d9ff',
-    color: '#0a0a0f',
+    backgroundColor: '#faff69',
+    color: '#0a0a0a',
   },
 })
 </script>
@@ -185,7 +185,7 @@ const queryInEditorTheme = EditorView.theme({
 <template>
   <div class="grid gap-3">
     <div ref="editorRoot" />
-    <p class="text-xs leading-5 text-[#8888aa]">
+    <p class="text-xs leading-5 text-[#888888]">
       Autocomplete includes SQL keywords, registered table names, and inferred column names.
       <span v-if="tableNames.length">Available tables: {{ tableNames.join(', ') }}.</span>
     </p>

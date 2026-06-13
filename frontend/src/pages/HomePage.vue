@@ -26,10 +26,10 @@ const highlights = [
     <div class="mx-auto grid min-h-[calc(100svh-73px)] w-full max-w-6xl content-center gap-12 px-5 py-16">
       <div class="max-w-3xl">
         <p class="eyebrow">Browser-based CSV query engine</p>
-        <h1 class="mt-5 max-w-3xl font-display text-5xl font-semibold leading-tight md:text-7xl">
+        <h1 class="mt-5 max-w-3xl font-display text-5xl font-bold leading-tight md:text-7xl">
           Query In
         </h1>
-        <p class="mt-6 max-w-2xl text-xl leading-8 text-[#c7c7dd]">
+        <p class="mt-6 max-w-2xl text-xl leading-8 text-[#cccccc]">
           Your data stays in your browser. Your queries run at native speed.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
@@ -43,9 +43,9 @@ const highlights = [
 
       <div class="grid gap-4 md:grid-cols-3">
         <article v-for="item in highlights" :key="item.title" class="feature-card">
-          <component :is="item.icon" class="size-5 text-[#00d9ff]" aria-hidden="true" />
-          <h2 class="mt-4 font-display text-xl font-semibold text-white">{{ item.title }}</h2>
-          <p class="mt-3 text-sm leading-6 text-[#a6a6c2]">{{ item.description }}</p>
+          <component :is="item.icon" class="size-5 text-[#faff69]" aria-hidden="true" />
+          <h2 class="mt-4 font-display text-xl font-bold text-white">{{ item.title }}</h2>
+          <p class="mt-3 text-sm leading-6 text-[#cccccc]">{{ item.description }}</p>
         </article>
       </div>
     </div>

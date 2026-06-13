@@ -18,8 +18,8 @@ const projects = [
 
     <div class="grid gap-4 md:grid-cols-2">
       <article v-for="project in projects" :key="project.name" class="feature-card">
-        <h2 class="font-display text-2xl font-semibold text-white">{{ project.name }}</h2>
-        <p class="mt-3 leading-7 text-[#a6a6c2]">{{ project.description }}</p>
+        <h2 class="font-display text-2xl font-bold text-white">{{ project.name }}</h2>
+        <p class="mt-3 leading-7 text-[#cccccc]">{{ project.description }}</p>
         <div class="mt-5 flex flex-wrap gap-2">
           <span v-for="item in project.stack" :key="item" class="badge">{{ item }}</span>
         </div>

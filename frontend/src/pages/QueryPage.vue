@@ -133,7 +133,7 @@ async function runQuery() {
     <div class="grid gap-4 lg:grid-cols-[1fr_1.2fr]">
       <section class="panel">
         <div class="panel-title">
-          <FileUp class="size-5 text-[#00d9ff]" aria-hidden="true" />
+          <FileUp class="size-5 text-[#faff69]" aria-hidden="true" />
           <h2>CSV Input</h2>
         </div>
         <FileDropzone @files-selected="handleFilesSelected" />
@@ -142,7 +142,7 @@ async function runQuery() {
       <section class="panel">
         <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div class="panel-title mb-0">
-            <Play class="size-5 text-[#00d9ff]" aria-hidden="true" />
+            <Play class="size-5 text-[#faff69]" aria-hidden="true" />
             <h2>SQL Editor</h2>
           </div>
           <button
@@ -162,7 +162,7 @@ async function runQuery() {
 
     <section class="panel">
       <div class="panel-title">
-        <ListTree class="size-5 text-[#00d9ff]" aria-hidden="true" />
+        <ListTree class="size-5 text-[#faff69]" aria-hidden="true" />
         <h2>Schema</h2>
       </div>
       <SchemaViewer :schemas="selectedSchemas" :is-loading="isRegisteringSchemas" :error="schemaError" />
@@ -170,7 +170,7 @@ async function runQuery() {
 
     <section class="panel">
       <div class="panel-title">
-        <TableProperties class="size-5 text-[#00d9ff]" aria-hidden="true" />
+        <TableProperties class="size-5 text-[#faff69]" aria-hidden="true" />
         <h2>Results</h2>
       </div>
       <ResultTable :result="queryResult" :is-loading="isExecutingQuery" :error="queryError" />

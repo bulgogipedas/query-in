@@ -131,7 +131,7 @@ function formatFileSize(bytes: number) {
     <button
       type="button"
       class="dropzone group grid min-h-48 w-full place-items-center border-dashed text-left transition"
-      :class="isDragging ? 'border-[#00d9ff] bg-[#102437]' : 'hover:border-[#00d9ff]/70 hover:bg-[#14142f]'"
+      :class="isDragging ? 'border-[#faff69] bg-[#242424]' : 'hover:border-[#faff69]/70 hover:bg-[#242424]'"
       @click="openFilePicker"
       @dragenter.prevent="handleDragEnter"
       @dragover.prevent
@@ -139,11 +139,11 @@ function formatFileSize(bytes: number) {
       @drop.prevent="handleDrop"
     >
       <span class="grid max-w-md justify-items-center gap-3 text-center">
-        <span class="grid size-12 place-items-center rounded-md bg-[#00d9ff] text-[#0a0a0f]">
+        <span class="grid size-12 place-items-center rounded-md bg-[#faff69] text-[#0a0a0a]">
           <Upload class="size-6" aria-hidden="true" />
         </span>
         <span class="font-display text-lg font-semibold text-white">Drop CSV files or browse</span>
-        <span class="text-sm leading-6 text-[#a6a6c2]">Multiple files are supported. Each file can be up to 50MB.</span>
+        <span class="text-sm leading-6 text-[#cccccc]">Multiple files are supported. Each file can be up to 50MB.</span>
       </span>
     </button>
 
@@ -156,8 +156,8 @@ function formatFileSize(bytes: number) {
       @change="handleInputChange"
     />
 
-    <div v-if="errors.length" class="grid gap-2 rounded-md border border-[#7f2534] bg-[#2d1118] p-3">
-      <div v-for="error in errors" :key="error" class="flex items-start gap-2 text-sm text-[#ffb3c0]">
+    <div v-if="errors.length" class="grid gap-2 rounded-md border border-[#3a1a1a] bg-[#1a0f0f] p-3">
+      <div v-for="error in errors" :key="error" class="flex items-start gap-2 text-sm text-[#ef4444]">
         <AlertCircle class="mt-0.5 size-4 shrink-0" aria-hidden="true" />
         <span>{{ error }}</span>
       </div>
@@ -167,18 +167,18 @@ function formatFileSize(bytes: number) {
       <div
         v-for="file in selectedFiles"
         :key="file.id"
-        class="flex min-h-14 items-center justify-between gap-3 rounded-md border border-[#2a2a4a] bg-[#101024] px-3 py-2"
+        class="flex min-h-14 items-center justify-between gap-3 rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2"
       >
         <div class="flex min-w-0 items-center gap-3">
-          <FileText class="size-5 shrink-0 text-[#00d9ff]" aria-hidden="true" />
+          <FileText class="size-5 shrink-0 text-[#faff69]" aria-hidden="true" />
           <div class="min-w-0">
             <p class="truncate text-sm font-semibold text-white">{{ file.name }}</p>
-            <p class="mt-0.5 text-xs text-[#8888aa]">{{ formatFileSize(file.size) }}</p>
+            <p class="mt-0.5 text-xs text-[#888888]">{{ formatFileSize(file.size) }}</p>
           </div>
         </div>
         <button
           type="button"
-          class="grid size-8 shrink-0 place-items-center rounded-md border border-[#2a2a4a] text-[#c7c7dd] transition hover:border-[#00d9ff]/70 hover:text-white"
+          class="grid size-8 shrink-0 place-items-center rounded-md border border-[#2a2a2a] text-[#cccccc] transition hover:border-[#faff69]/70 hover:text-white"
           :aria-label="`Remove ${file.name}`"
           @click.stop="removeFile(file.id)"
         >

@@ -10,16 +10,16 @@
 
     <div class="grid gap-4 md:grid-cols-3">
       <article class="feature-card">
-        <h2 class="font-display text-xl font-semibold text-white">Systems</h2>
-        <p class="mt-3 text-sm leading-6 text-[#a6a6c2]">Rust, Axum, WebAssembly, workers, and performance-aware browser architecture.</p>
+        <h2 class="font-display text-xl font-bold text-white">Systems</h2>
+        <p class="mt-3 text-sm leading-6 text-[#cccccc]">Rust, Axum, WebAssembly, workers, and performance-aware browser architecture.</p>
       </article>
       <article class="feature-card">
-        <h2 class="font-display text-xl font-semibold text-white">Data</h2>
-        <p class="mt-3 text-sm leading-6 text-[#a6a6c2]">CSV parsing, schema inference, SQL workflows, query history, and exportable results.</p>
+        <h2 class="font-display text-xl font-bold text-white">Data</h2>
+        <p class="mt-3 text-sm leading-6 text-[#cccccc]">CSV parsing, schema inference, SQL workflows, query history, and exportable results.</p>
       </article>
       <article class="feature-card">
-        <h2 class="font-display text-xl font-semibold text-white">Product</h2>
-        <p class="mt-3 text-sm leading-6 text-[#a6a6c2]">A recruiter-friendly portfolio surface with real interaction instead of static screenshots.</p>
+        <h2 class="font-display text-xl font-bold text-white">Product</h2>
+        <p class="mt-3 text-sm leading-6 text-[#cccccc]">A recruiter-friendly portfolio surface with real interaction instead of static screenshots.</p>
       </article>
     </div>
   </section>

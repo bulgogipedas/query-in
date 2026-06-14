@@ -7,6 +7,7 @@ RUN rustup target add wasm32-unknown-unknown \
 
 COPY Cargo.toml Cargo.lock ./
 COPY backend/Cargo.toml backend/Cargo.toml
+COPY backend/src backend/src
 COPY query-engine-wasm/Cargo.toml query-engine-wasm/Cargo.toml
 COPY query-engine-wasm query-engine-wasm
 

@@ -1,6 +1,6 @@
 # GitHub Workflow
 
-Query In uses an issue-first, pull-request-driven workflow so the portfolio history is reviewable and professional.
+Query In uses an issue-first, pull-request-driven workflow so product and engineering changes stay reviewable and professional.
 
 ## Rules
 

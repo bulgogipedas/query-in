@@ -1,6 +1,6 @@
 # Query In
 
-Query In is a browser-based CSV query engine and data engineering portfolio. It is designed as a working product: visitors can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
+Query In is a browser-based CSV query workspace for teams that need fast, private analysis without moving files into a warehouse first. Users can upload CSV files, inspect schemas, and run SQL in the browser while their data stays on their device.
 
 > Your data stays in your browser. Your queries run at native speed.
 
@@ -54,7 +54,7 @@ Build and size-check the browser package with:
 WASM_PACK=/path/to/wasm-pack scripts/check-wasm-package.sh
 ```
 
-The generated `query-engine-wasm/pkg/` directory is ignored by Git and must stay below 5MB for the current portfolio budget.
+The generated `query-engine-wasm/pkg/` directory is ignored by Git and must stay below 5MB for the current browser delivery budget.
 
 You can also run both services through Podman Compose:
 

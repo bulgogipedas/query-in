@@ -2,22 +2,21 @@
 
 ## Vision
 
-Query In is a portfolio project that behaves like a real product. Visitors can upload CSV files, inspect inferred schemas, and run SQL queries directly in the browser. The core promise is privacy and speed: data stays local, while the query engine targets native-like performance through Rust and WebAssembly.
+Query In is a browser-based CSV query workspace for private, fast operational analysis. Users can upload CSV files, inspect inferred schemas, and run SQL queries directly in the browser. The core promise is privacy and speed: data stays local, while the query engine targets native-like performance through Rust and WebAssembly.
 
 ## Product Goals
 
-- Demonstrate data engineering skill through a usable browser experience.
-- Keep uploaded data on the visitor device.
+- Give teams a usable local-first workflow for CSV analysis.
+- Keep uploaded data on the user device.
 - Support SQL-based exploration of CSV files.
-- Present backend, frontend, and systems engineering choices clearly.
+- Present infrastructure, runtime, and systems choices clearly for technical buyers.
 - Build the repository history through issues and pull requests.
 
 ## Core Pages
 
-- Home: product positioning, technical highlights, and portfolio entry points.
+- Home: product positioning, technical highlights, and conversion paths.
 - Query: CSV upload, schema preview, SQL editor, results table, export, and charting workflow.
-- Projects: data engineering project cards with stack badges and links.
-- About: professional profile, skills, experience, and contact links.
+- Use Cases: operational scenarios, data workflows, stack notes, and product outcomes.
 
 ## Technical Architecture
 
@@ -30,7 +29,7 @@ Query In is a portfolio project that behaves like a real product. Visitors can u
 1. Foundation: monorepo, documentation, frontend routes, backend health endpoint, and WASM placeholder API.
 2. WASM engine: DataFusion integration, CSV registration, basic SQL execution, and worker bridge.
 3. Query UI: file dropzone, schema viewer, CodeMirror SQL editor, result table, export, and query history.
-4. Portfolio polish: black/electric-yellow WebGL or canvas hero, responsive UI, projects page, about page, and SEO metadata.
+4. Product polish: black/electric-yellow WebGL or canvas hero, responsive UI, use case page, SaaS-grade copy, and SEO metadata.
 5. Deployment: Podman-based production build pipeline, static frontend serving, HTTPS, caching, and performance audit.
 
 ## Performance Targets
@@ -38,8 +37,8 @@ Query In is a portfolio project that behaves like a real product. Visitors can u
 - First Contentful Paint below 1.2 seconds.
 - WASM load and initialization below 800 milliseconds.
 - Query 100,000 CSV rows in less than 500 milliseconds where practical.
-- Lighthouse performance score of 90 or higher.
-- Keep JavaScript and WASM payloads small enough for a portfolio visitor experience.
+- Lighthouse performance score of 90 or higher after a dedicated performance pass.
+- Keep JavaScript and WASM payloads small enough for a fast first-run product experience.
 
 ## Risks
 

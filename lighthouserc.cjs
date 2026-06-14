@@ -3,7 +3,7 @@ module.exports = {
     collect: {
       numberOfRuns: 1,
       startServerCommand: 'cd frontend && bun run preview --host 127.0.0.1 --port 4173',
-      startServerReadyPattern: 'Local:',
+      startServerReadyPattern: 'http://127.0.0.1:4173/',
       startServerReadyTimeout: 30000,
       url: [
         'http://127.0.0.1:4173/',

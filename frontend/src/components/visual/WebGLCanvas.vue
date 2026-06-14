@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { nextTick, onBeforeUnmount, ref } from 'vue'
 
 const canvasElement = ref<HTMLCanvasElement | null>(null)
 const hasWebgl = ref(true)
+const shouldRenderWebgl = ref(false)
 
 let animationFrame = 0
 let gl: WebGLRenderingContext | null = null
@@ -61,7 +62,16 @@ const fragmentShaderSource = `
   }
 `
 
-onMounted(() => {
+function activateWebgl() {
+  if (shouldRenderWebgl.value || !hasWebgl.value) {
+    return
+  }
+
+  shouldRenderWebgl.value = true
+  void nextTick(initializeWebgl)
+}
+
+function initializeWebgl() {
   const canvas = canvasElement.value
 
   if (!canvas) {
@@ -97,7 +107,7 @@ onMounted(() => {
   gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
   startedAt = performance.now()
   render()
-})
+}
 
 onBeforeUnmount(() => {
   cancelAnimationFrame(animationFrame)
@@ -180,16 +190,24 @@ function createShader(targetGl: WebGLRenderingContext, type: number, source: str
 </script>
 
 <template>
-  <div class="relative min-h-[24rem] overflow-hidden rounded-xl border border-[#2a2a2a] bg-[#1a1a1a]">
+  <div
+    class="relative min-h-[24rem] overflow-hidden rounded-xl border border-[#2a2a2a] bg-[#1a1a1a]"
+    @click="activateWebgl"
+    @focusin="activateWebgl"
+    @pointerenter="activateWebgl"
+  >
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(250,255,105,0.16),transparent_34%),linear-gradient(90deg,rgba(250,255,105,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(250,255,105,0.06)_1px,transparent_1px)] bg-[length:auto,2rem_2rem,2rem_2rem]"
+      aria-hidden="true"
+    />
+
     <canvas
-      v-if="hasWebgl"
+      v-if="shouldRenderWebgl && hasWebgl"
       ref="canvasElement"
       class="absolute inset-0 h-full w-full"
       aria-hidden="true"
       data-testid="webgl-hero-canvas"
     />
-
-    <div v-else class="absolute inset-0 bg-[#121212]" aria-hidden="true" />
 
     <div class="relative grid h-full min-h-[24rem] content-between p-5">
       <div class="flex items-center justify-between border-b border-[#2a2a2a] pb-3 font-mono text-xs text-[#888888]">

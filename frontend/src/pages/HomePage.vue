@@ -1,25 +1,31 @@
 <script setup lang="ts">
-import { ArrowRight, Lock, Zap, Braces } from 'lucide-vue-next'
+import { defineAsyncComponent, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import WebGLCanvas from '../components/visual/WebGLCanvas.vue'
+
+const WebGLCanvas = defineAsyncComponent(() => import('../components/visual/WebGLCanvas.vue'))
+const showInteractiveHero = ref(false)
 
 const highlights = [
   {
     title: 'Instant Local Queries',
     description: 'Open large CSV files and run SQL in the browser without waiting on uploads or warehouse setup.',
-    icon: Zap,
+    marker: '01',
   },
   {
     title: 'Private by Default',
     description: 'Files stay on the user device, giving teams a safer way to inspect sensitive operational data.',
-    icon: Lock,
+    marker: '02',
   },
   {
     title: 'Workflow Ready',
     description: 'Schema inference, query history, and result exports keep lightweight analysis moving end to end.',
-    icon: Braces,
+    marker: '03',
   },
 ]
+
+function activateHero() {
+  showInteractiveHero.value = true
+}
 </script>
 
 <template>
@@ -37,17 +43,59 @@ const highlights = [
         <div class="mt-8 flex flex-wrap gap-3">
           <RouterLink class="primary-action" to="/query">
             Start Querying
-            <ArrowRight class="size-4" aria-hidden="true" />
+            <span aria-hidden="true">-&gt;</span>
           </RouterLink>
           <RouterLink class="secondary-action" to="/projects">Explore Use Cases</RouterLink>
         </div>
       </div>
 
-      <WebGLCanvas />
+      <WebGLCanvas v-if="showInteractiveHero" start-on-mount />
+
+      <div
+        v-else
+        class="relative min-h-[24rem] overflow-hidden rounded-xl border border-[#2a2a2a] bg-[#1a1a1a]"
+        @click="activateHero"
+        @focusin="activateHero"
+        @pointerenter="activateHero"
+      >
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(250,255,105,0.16),transparent_34%),linear-gradient(90deg,rgba(250,255,105,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(250,255,105,0.06)_1px,transparent_1px)] bg-[length:auto,2rem_2rem,2rem_2rem]"
+          aria-hidden="true"
+        />
+
+        <div class="relative grid h-full min-h-[24rem] content-between p-5">
+          <div
+            class="flex items-center justify-between border-b border-[#2a2a2a] pb-3 font-mono text-xs text-[#888888]"
+          >
+            <span>query-in://local-engine</span>
+            <span class="text-[#faff69]">WASM READY</span>
+          </div>
+
+          <pre class="overflow-hidden font-mono text-sm leading-7 text-white"><code><span class="text-[#888888]">01</span> select region, revenue
+<span class="text-[#888888]">02</span> from uploaded_csv
+<span class="text-[#888888]">03</span> where browser_only = true
+<span class="text-[#888888]">04</span> limit 100;</code></pre>
+
+          <div class="grid gap-3 sm:grid-cols-3">
+            <div class="border-l border-[#faff69] pl-3">
+              <p class="font-mono text-2xl font-bold text-[#faff69]">0</p>
+              <p class="text-xs text-[#888888]">server uploads</p>
+            </div>
+            <div class="border-l border-[#faff69] pl-3">
+              <p class="font-mono text-2xl font-bold text-[#faff69]">WASM</p>
+              <p class="text-xs text-[#888888]">query runtime</p>
+            </div>
+            <div class="border-l border-[#faff69] pl-3">
+              <p class="font-mono text-2xl font-bold text-[#faff69]">SQL</p>
+              <p class="text-xs text-[#888888]">local analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="grid gap-4 md:grid-cols-3 lg:col-span-2">
         <article v-for="item in highlights" :key="item.title" class="feature-card">
-          <component :is="item.icon" class="size-5 text-[#faff69]" aria-hidden="true" />
+          <span class="font-mono text-sm font-bold text-[#faff69]" aria-hidden="true">{{ item.marker }}</span>
           <h2 class="mt-4 font-display text-xl font-bold text-white">{{ item.title }}</h2>
           <p class="mt-3 text-sm leading-6 text-[#cccccc]">{{ item.description }}</p>
         </article>

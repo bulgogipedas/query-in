@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { Github, Linkedin } from 'lucide-vue-next'
-</script>
-
 <template>
   <footer class="border-t border-[#2a2a2a]">
     <div
@@ -9,11 +5,11 @@ import { Github, Linkedin } from 'lucide-vue-next'
     >
       <p>Private CSV analysis, running locally in the browser.</p>
       <div class="flex gap-3">
-        <a class="icon-link" href="https://github.com/bulgogipedas/query-in" aria-label="GitHub repository">
-          <Github class="size-5" aria-hidden="true" />
+        <a class="icon-link px-3 font-mono text-xs" href="https://github.com/bulgogipedas/query-in">
+          GitHub
         </a>
-        <a class="icon-link" href="https://www.linkedin.com" aria-label="LinkedIn profile">
-          <Linkedin class="size-5" aria-hidden="true" />
+        <a class="icon-link px-3 font-mono text-xs" href="https://www.linkedin.com">
+          LinkedIn
         </a>
       </div>
     </div>

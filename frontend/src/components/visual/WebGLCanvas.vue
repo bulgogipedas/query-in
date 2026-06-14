@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+
+const props = withDefaults(
+  defineProps<{
+    startOnMount?: boolean
+  }>(),
+  {
+    startOnMount: false,
+  },
+)
 
 const canvasElement = ref<HTMLCanvasElement | null>(null)
 const hasWebgl = ref(true)
@@ -111,6 +120,12 @@ function initializeWebgl() {
 
 onBeforeUnmount(() => {
   cancelAnimationFrame(animationFrame)
+})
+
+onMounted(() => {
+  if (props.startOnMount) {
+    activateWebgl()
+  }
 })
 
 function render() {

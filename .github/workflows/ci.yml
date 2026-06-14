@@ -40,7 +40,8 @@ jobs:
         run: cargo install wasm-pack --locked
 
       - name: Build WASM package
-        run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh
+        run: |
+          "$HOME/.cargo/bin/wasm-pack" build query-engine-wasm --target web --out-dir pkg --dev
 
       - name: Typecheck
         working-directory: frontend

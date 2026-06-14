@@ -5,4 +5,6 @@ frontend/dist
 frontend/node_modules
 query-engine-wasm/pkg
 *.log
+.env
+.env.*
 .DS_Store

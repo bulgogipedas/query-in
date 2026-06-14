@@ -9,7 +9,7 @@ Query In is a browser-based CSV query workspace for teams that need fast, privat
 - Frontend: Vue 3, Vite, TypeScript, Tailwind CSS v4, Bun
 - Backend: Rust, Axum, Tokio
 - WASM: Rust, wasm-bindgen, Apache DataFusion 53.1.0 integration
-- Containers: Podman, Podman Compose, and future production Containerfile
+- Containers: Podman, Podman Compose, and production Containerfile
 - Workflow: GitHub issues, focused branches, reviewed pull requests
 
 ## Repository Layout
@@ -70,6 +70,12 @@ podman run --rm -p 8080:8080 query-in:local
 ```
 
 The runtime image starts the Axum API on `127.0.0.1:3001` and serves the built frontend through Caddy on `:8080`. Set `QUERY_IN_SITE_ADDRESS` to a real production domain, for example `query-in.example.com`, when deploying behind public DNS so Caddy can manage HTTPS automatically.
+
+See [deploy/README.md](deploy/README.md) for the Podman production runbook and [docs/performance.md](docs/performance.md) for the current performance budget.
+
+## Open Source
+
+Query In is free open-source software. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [CHANGELOG.md](CHANGELOG.md) for project participation, vulnerability reporting, conduct, and release history.
 
 ## GitHub Workflow
 

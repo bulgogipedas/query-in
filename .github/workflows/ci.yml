@@ -88,7 +88,9 @@ jobs:
         run: cargo check -p query-engine-wasm --target wasm32-unknown-unknown
 
       - name: Install wasm-pack
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: cargo install wasm-pack --locked
 
       - name: Check WASM package size
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh

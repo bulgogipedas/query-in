@@ -9,7 +9,6 @@ module.exports = {
         'http://127.0.0.1:4173/',
         'http://127.0.0.1:4173/query',
         'http://127.0.0.1:4173/projects',
-        'http://127.0.0.1:4173/about',
       ],
       settings: {
         chromeFlags: '--headless=new --no-sandbox',

@@ -1,0 +1,25 @@
+{$QUERY_IN_SITE_ADDRESS::8080} {
+	encode zstd gzip
+	root * /srv/query-in
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:3001
+	}
+
+	@immutable_assets {
+		path *.css *.js *.wasm *.svg *.png *.jpg *.jpeg *.webp *.ico
+	}
+
+	header @immutable_assets Cache-Control "public, max-age=31536000, immutable"
+	header {
+		Cache-Control "public, max-age=300"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+	}
+
+	handle {
+		try_files {path} /index.html
+		file_server
+	}
+}

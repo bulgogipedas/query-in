@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+
+      - name: Set up Rust for WASM package
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: bun install --frozen-lockfile
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack --locked
+
+      - name: Build WASM package
+        run: |
+          "$HOME/.cargo/bin/wasm-pack" build query-engine-wasm --target web --out-dir pkg --dev
+
+      - name: Typecheck
+        working-directory: frontend
+        run: bun run typecheck
+
+      - name: Test
+        working-directory: frontend
+        run: bun run test
+
+      - name: Build
+        working-directory: frontend
+        run: bun run build
+
+  rust:
+    name: Rust
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+          targets: wasm32-unknown-unknown
+
+      - name: Format check
+        run: cargo fmt --all -- --check
+
+      - name: Check workspace
+        run: cargo check --workspace
+
+      - name: Test backend
+        run: cargo test -p backend -- --nocapture
+
+      - name: Test WASM crate
+        run: cargo test -p query-engine-wasm
+
+      - name: Clippy
+        run: cargo clippy --workspace -- -D warnings
+
+      - name: Check WASM target
+        run: cargo check -p query-engine-wasm --target wasm32-unknown-unknown
+
+      - name: Install wasm-pack
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: cargo install wasm-pack --locked
+
+      - name: Check WASM package size
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh

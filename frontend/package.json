@@ -1,0 +1,42 @@
+{
+  "name": "query-in-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "rm -rf node_modules/fsevents && vite",
+    "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 vue-tsc -b",
+    "build": "rm -rf node_modules/fsevents && NODE_OPTIONS=--max-old-space-size=4096 vue-tsc -b && bunx vite build",
+    "preview": "rm -rf node_modules/fsevents && vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.20.3",
+    "@codemirror/commands": "^6.10.3",
+    "@codemirror/lang-sql": "^6.10.0",
+    "@codemirror/language": "^6.12.3",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/view": "^6.43.1",
+    "@lezer/highlight": "^1.2.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "@tanstack/vue-virtual": "^3.13.28",
+    "lucide-vue-next": "^1.0.0",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.34",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@types/node": "^22",
+    "@vitejs/plugin-vue": "5.2.1",
+    "@vue/tsconfig": "^0.7",
+    "rollup": "^4.61.1",
+    "typescript": "^5",
+    "vite": "6.0.0",
+    "vitest": "3.2.6",
+    "vue-tsc": "^2"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node@4.61.1"
+  }
+}

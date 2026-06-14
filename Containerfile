@@ -13,7 +13,7 @@ COPY query-engine-wasm query-engine-wasm
 
 RUN wasm-pack build query-engine-wasm --target web --out-dir pkg --release
 
-FROM oven/bun:1 AS frontend-builder
+FROM oven/bun:1.3.3 AS frontend-builder
 
 WORKDIR /workspace
 
@@ -27,6 +27,11 @@ WORKDIR /workspace
 
 COPY frontend frontend
 COPY --from=wasm-builder /workspace/query-engine-wasm/pkg query-engine-wasm/pkg
+
+RUN test -f frontend/src/App.vue \
+  && test -f frontend/src/pages/HomePage.vue \
+  && test -f frontend/src/pages/QueryPage.vue \
+  && test -f frontend/src/pages/ProjectsPage.vue
 
 RUN cd frontend && bun run build
 

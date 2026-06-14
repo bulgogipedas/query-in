@@ -1,0 +1,13 @@
+services:
+  query-in:
+    build:
+      context: ..
+      dockerfile: Containerfile
+    image: query-in:local
+    environment:
+      QUERY_IN_SITE_ADDRESS: ${QUERY_IN_SITE_ADDRESS:-:8080}
+      QUERY_IN_BACKEND_ADDR: ${QUERY_IN_BACKEND_ADDR:-127.0.0.1:3001}
+      RUST_LOG: ${RUST_LOG:-info}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

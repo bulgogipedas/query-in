@@ -3,11 +3,12 @@
 	root * /srv/query-in
 
 	handle /api/* {
-		reverse_proxy 127.0.0.1:3001
+		header Cache-Control "no-store"
+		reverse_proxy {$QUERY_IN_BACKEND_ADDR:127.0.0.1:3001}
 	}
 
 	@immutable_assets {
-		path *.css *.js *.wasm *.svg *.png *.jpg *.jpeg *.webp *.ico
+		path /assets/*
 	}
 
 	header @immutable_assets Cache-Control "public, max-age=31536000, immutable"

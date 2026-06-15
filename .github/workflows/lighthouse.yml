@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: lighthouse-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -32,12 +35,20 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
 
+      - name: Cache wasm-pack
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/wasm-pack
+          key: ${{ runner.os }}-wasm-pack-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-wasm-pack-
+
       - name: Install dependencies
         working-directory: frontend
         run: bun install --frozen-lockfile
 
       - name: Install wasm-pack
-        run: cargo install wasm-pack --locked
+        run: command -v wasm-pack || cargo install wasm-pack --locked
 
       - name: Build WASM package
         run: |
@@ -45,7 +56,7 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: bun run build
+        run: bun run build:container
 
       - name: Run Lighthouse CI
         run: ./frontend/node_modules/.bin/lhci autorun --config=lighthouserc.cjs

@@ -27,6 +27,8 @@ cargo clippy --workspace -- -D warnings
 WASM_PACK=/path/to/wasm-pack scripts/check-wasm-package.sh
 ```
 
+The `WASM Package Size` GitHub Actions workflow also runs for `v*` release tags and can be started manually before publishing a release.
+
 ## Container
 
 Build the production image:

@@ -7,6 +7,7 @@
     "dev": "rm -rf node_modules/fsevents && vite",
     "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 vue-tsc -b",
     "build": "rm -rf node_modules/fsevents && NODE_OPTIONS=--max-old-space-size=4096 vue-tsc -b && bunx vite build",
+    "build:container": "rm -rf node_modules/fsevents && bunx vite build",
     "preview": "rm -rf node_modules/fsevents && vite preview",
     "test": "vitest run"
   },

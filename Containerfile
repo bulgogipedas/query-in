@@ -21,7 +21,7 @@ COPY frontend/package.json frontend/bun.lock frontend/
 
 WORKDIR /workspace/frontend
 
-RUN bun install --frozen-lockfile --omit optional
+RUN bun install --frozen-lockfile
 
 WORKDIR /workspace
 

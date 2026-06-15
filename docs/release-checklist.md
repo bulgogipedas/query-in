@@ -62,3 +62,5 @@ Use annotated tags:
 git tag -a v0.1.0 -m "Release v0.1.0"
 git push origin v0.1.0
 ```
+
+Pushing a `v*` tag runs the Container Publish workflow. The workflow can also be started manually from GitHub Actions when a maintainer needs to rebuild an image without creating a release tag.

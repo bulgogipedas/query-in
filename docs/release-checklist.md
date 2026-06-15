@@ -35,6 +35,8 @@ Build the production image:
 podman build -t query-in:release-candidate -f Containerfile .
 ```
 
+The container build runs the Vite production bundle step only. Frontend type safety is validated by the CI `Frontend` job before release.
+
 Run it locally:
 
 ```bash

@@ -33,7 +33,7 @@ RUN test -f frontend/src/App.vue \
   && test -f frontend/src/pages/QueryPage.vue \
   && test -f frontend/src/pages/ProjectsPage.vue
 
-RUN cd frontend && bun run build
+RUN cd frontend && bun run build:container
 
 FROM rust:1.91 AS backend-builder
 

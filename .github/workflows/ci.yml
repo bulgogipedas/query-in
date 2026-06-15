@@ -80,15 +80,6 @@ jobs:
           components: clippy, rustfmt
           targets: wasm32-unknown-unknown
 
-      - name: Cache wasm-pack
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/cache@v4
-        with:
-          path: ~/.cargo/bin/wasm-pack
-          key: ${{ runner.os }}-wasm-pack-${{ hashFiles('Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-wasm-pack-
-
       - name: Format check
         run: cargo fmt --all -- --check
 
@@ -106,11 +97,3 @@ jobs:
 
       - name: Check WASM target
         run: cargo check -p query-engine-wasm --target wasm32-unknown-unknown
-
-      - name: Install wasm-pack
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: command -v wasm-pack || cargo install wasm-pack --locked
-
-      - name: Check WASM package size
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh

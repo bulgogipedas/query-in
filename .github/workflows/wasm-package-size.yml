@@ -1,0 +1,45 @@
+name: WASM Package Size
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: wasm-package-size-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  wasm-package-size:
+    name: WASM Package Size
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache wasm-pack
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/wasm-pack
+          key: ${{ runner.os }}-wasm-pack-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-wasm-pack-
+
+      - name: Install wasm-pack
+        run: command -v wasm-pack || cargo install wasm-pack --locked
+
+      - name: Check WASM package size
+        run: WASM_PACK="$HOME/.cargo/bin/wasm-pack" scripts/check-wasm-package.sh

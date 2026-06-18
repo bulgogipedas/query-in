@@ -1,0 +1,21 @@
+{
+  "name": "query-engine-wasm",
+  "type": "module",
+  "description": "Rust WebAssembly query engine bindings for Query In",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bulgogipedas/query-in"
+  },
+  "files": [
+    "query_engine_wasm_bg.wasm",
+    "query_engine_wasm.js",
+    "query_engine_wasm.d.ts"
+  ],
+  "main": "query_engine_wasm.js",
+  "types": "query_engine_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

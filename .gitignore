@@ -8,8 +8,9 @@ frontend/dist/
 # Rust build output
 target/
 
-# WASM build output
-query-engine-wasm/pkg/
+# WASM package is committed so static hosts can build the frontend without
+# compiling Rust in their build sandbox. Use scripts/check-wasm-package.sh before
+# updating these files.
 
 # Environment
 .env

@@ -73,6 +73,8 @@ The runtime image starts the Axum API on `127.0.0.1:3001` and serves the built f
 
 See [deploy/README.md](deploy/README.md) for the Podman production runbook and [docs/performance.md](docs/performance.md) for the current performance budget.
 
+Query In can also be deployed to Vercel as a static Vite app with lightweight serverless API compatibility routes. See [deploy/vercel.md](deploy/vercel.md) for the Vercel setup.
+
 ## Open Source
 
 Query In is free open-source software. See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [CHANGELOG.md](CHANGELOG.md) for project participation, vulnerability reporting, conduct, and release history.

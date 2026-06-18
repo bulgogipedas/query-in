@@ -1,0 +1,2 @@
+# The browser package is committed so Vercel can build the static frontend
+# without compiling Rust in the deployment sandbox.

@@ -31,7 +31,7 @@ COPY --from=wasm-builder /workspace/query-engine-wasm/pkg query-engine-wasm/pkg
 RUN test -f frontend/src/App.vue \
   && test -f frontend/src/pages/HomePage.vue \
   && test -f frontend/src/pages/QueryPage.vue \
-  && test -f frontend/src/pages/ProjectsPage.vue
+  && test -f frontend/src/pages/UseCasesPage.vue
 
 RUN cd frontend && bun run build:container
 

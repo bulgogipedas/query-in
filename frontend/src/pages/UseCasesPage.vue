@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-type Project = {
+type UseCase = {
   name: string
   slug: string
   summary: string
@@ -9,19 +9,19 @@ type Project = {
   stack: string[]
 }
 
-const projects = ref<Project[]>([])
+const useCases = ref<UseCase[]>([])
 const isLoading = ref(true)
 const errorMessage = ref('')
 
 onMounted(async () => {
   try {
-    const response = await fetch('/api/projects')
+    const response = await fetch('/api/use-cases')
 
     if (!response.ok) {
       throw new Error(`Use case request failed with ${response.status}`)
     }
 
-    projects.value = await response.json() as Project[]
+    useCases.value = await response.json() as UseCase[]
   } catch (error) {
     errorMessage.value = error instanceof Error
       ? error.message
@@ -50,14 +50,14 @@ onMounted(async () => {
     </div>
 
     <div v-else class="grid gap-4 md:grid-cols-2">
-      <article v-for="project in projects" :key="project.name" class="feature-card">
+      <article v-for="useCase in useCases" :key="useCase.name" class="feature-card">
         <div class="flex items-start justify-between gap-4">
-          <h2 class="font-display text-2xl font-bold text-white">{{ project.name }}</h2>
-          <span class="badge">{{ project.status }}</span>
+          <h2 class="font-display text-2xl font-bold text-white">{{ useCase.name }}</h2>
+          <span class="badge">{{ useCase.status }}</span>
         </div>
-        <p class="mt-3 leading-7 text-[#cccccc]">{{ project.summary }}</p>
+        <p class="mt-3 leading-7 text-[#cccccc]">{{ useCase.summary }}</p>
         <div class="mt-5 flex flex-wrap gap-2">
-          <span v-for="item in project.stack" :key="item" class="badge">{{ item }}</span>
+          <span v-for="item in useCase.stack" :key="item" class="badge">{{ item }}</span>
         </div>
       </article>
     </div>

@@ -18,7 +18,7 @@ struct HealthResponse {
 }
 
 #[derive(Clone, Serialize)]
-struct ProjectResponse {
+struct UseCaseResponse {
     name: &'static str,
     slug: &'static str,
     summary: &'static str,
@@ -35,7 +35,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let app = Router::new()
         .route("/api/health", get(health))
-        .route("/api/projects", get(projects))
+        .route("/api/use-cases", get(use_cases))
+        .route("/api/projects", get(use_cases))
         .layer(CorsLayer::permissive())
         .with_state(state);
 
@@ -58,20 +59,20 @@ async fn health(State(state): State<AppState>) -> Json<HealthResponse> {
     })
 }
 
-async fn projects() -> Json<Vec<ProjectResponse>> {
-    Json(project_catalog())
+async fn use_cases() -> Json<Vec<UseCaseResponse>> {
+    Json(use_case_catalog())
 }
 
-fn project_catalog() -> Vec<ProjectResponse> {
+fn use_case_catalog() -> Vec<UseCaseResponse> {
     vec![
-        ProjectResponse {
+        UseCaseResponse {
             name: "Operations Review",
             slug: "query-in",
             summary: "Inspect exports from billing, support, product, or CRM tools without uploading sensitive files into another SaaS system.",
             status: "Ready",
             stack: vec!["Private CSVs", "SQL", "Schema inference", "Export"],
         },
-        ProjectResponse {
+        UseCaseResponse {
             name: "Pre-Warehouse Triage",
             slug: "local-query-engine",
             summary: "Validate file shape, inspect nulls, and answer quick questions before deciding whether data belongs in the warehouse.",
@@ -88,13 +89,13 @@ fn project_catalog() -> Vec<ProjectResponse> {
 
 #[cfg(test)]
 mod tests {
-    use super::project_catalog;
+    use super::use_case_catalog;
 
     #[test]
-    fn project_catalog_contains_query_in() {
-        let projects = project_catalog();
+    fn use_case_catalog_contains_query_in() {
+        let use_cases = use_case_catalog();
 
-        assert!(projects.iter().any(|project| project.slug == "query-in"));
-        assert!(projects.iter().all(|project| !project.stack.is_empty()));
+        assert!(use_cases.iter().any(|use_case| use_case.slug == "query-in"));
+        assert!(use_cases.iter().all(|use_case| !use_case.stack.is_empty()));
     }
 }

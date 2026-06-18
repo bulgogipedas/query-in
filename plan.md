@@ -1,12 +1,12 @@
 # Query In Project Plan
 
-Query In is a browser-based CSV query engine and data engineering portfolio app. The product goal is a working portfolio experience where visitors can upload CSV files, query them with SQL in the browser, and review supporting data engineering projects.
+Query In is a free open-source browser-based CSV analysis workspace. The product goal is a local-first experience where users can upload CSV files, inspect schemas, and run SQL in the browser without sending data to a server.
 
 ## Stack
 
 - Frontend: Vue 3, Vite, TypeScript, Tailwind CSS v4, Bun
 - Backend: Rust, Axum, Tokio
-- WASM engine: Rust, wasm-bindgen, planned DataFusion integration
+- WASM engine: Rust, wasm-bindgen, Apache DataFusion integration
 - Development workflow: GitHub issues, focused branches, conventional commits, and pull requests
 
 ## Architecture
@@ -24,7 +24,7 @@ docs/               Supporting product and workflow documentation
 - [x] Install and configure Tailwind CSS v4 with `@theme` design tokens
 - [x] Create Cargo workspace with `backend/` and `query-engine-wasm/` crates
 - [x] Axum skeleton with `GET /api/health` returning `{ status, version, uptime }`
-- [x] Vue Router with 4 routes: `/`, `/query`, `/projects`, `/about`
+- [x] Vue Router with product routes: `/`, `/query`, `/use-cases`, and compatibility redirects
 - [x] Navbar and Footer components
 - [x] Podman Compose for local dev
 
@@ -54,8 +54,8 @@ docs/               Supporting product and workflow documentation
 
 - [x] `WebGLCanvas.vue` black/electric-yellow product surface with code-console motion
 - [x] Hero section with black/yellow WebGL background, headline, and CTA button
-- [x] Projects page fetching from `GET /api/projects`
-- [x] About page with skills matrix
+- [x] Use cases page fetching from `GET /api/use-cases`
+- [x] Product redirects for legacy `/about` and `/projects` paths
 - [x] Page transitions with Vue `<Transition>`
 - [x] Mobile responsive at 768px breakpoint
 
@@ -64,7 +64,7 @@ docs/               Supporting product and workflow documentation
 - [x] Multi-stage Containerfile: WASM build, frontend build, backend build, runtime
 - [x] Caddy config for reverse proxy and HTTPS
 - [x] GitHub Actions CI: lint and test on every PR
-- [x] GitHub Actions CD: Podman build and push on merge to main
+- [x] GitHub Actions CD: Podman build and push on release tags or manual dispatch
 - [x] Lighthouse CI asserting Performance >= 90
 
 ## Engineering Rules

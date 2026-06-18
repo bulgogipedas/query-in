@@ -45,7 +45,7 @@ function activateHero() {
             Start Querying
             <span aria-hidden="true">-&gt;</span>
           </RouterLink>
-          <RouterLink class="secondary-action" to="/projects">Explore Use Cases</RouterLink>
+          <RouterLink class="secondary-action" to="/use-cases">Explore Use Cases</RouterLink>
         </div>
       </div>
 

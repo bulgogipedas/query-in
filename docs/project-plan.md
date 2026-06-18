@@ -14,14 +14,14 @@ Query In is a free open-source browser-based CSV query workspace for private, fa
 
 ## Core Pages
 
-- Home: product positioning, technical highlights, and conversion paths.
+- Home: product positioning, technical highlights, and clear paths into the app.
 - Query: CSV upload, schema preview, SQL editor, results table, export, and charting workflow.
 - Use Cases: operational scenarios, data workflows, stack notes, and product outcomes.
 
 ## Technical Architecture
 
 - `frontend/`: Vue 3 application built with Vite, TypeScript, Tailwind CSS v4, and Bun.
-- `backend/`: Rust Axum service for health checks and future project metadata APIs.
+- `backend/`: Rust Axum service for health checks and product metadata APIs.
 - `query-engine-wasm/`: Rust WebAssembly crate that will host CSV registration, schema inference, and SQL execution.
 
 ## Milestones

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Clock3, FileUp, ListTree, Play, TableProperties, Trash2 } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { ChevronDown, ChevronRight, Clock3, FileUp, ListTree, Play, TableProperties, Trash2 } from 'lucide-vue-next'
+import { computed, nextTick, ref } from 'vue'
 import FileDropzone, { type CsvFileSelection } from '../components/query/FileDropzone.vue'
 import ResultTable from '../components/query/ResultTable.vue'
 import SchemaViewer from '../components/query/SchemaViewer.vue'
@@ -17,6 +17,8 @@ const queryError = ref<string | null>(null)
 const queryResult = ref<QueryResult | null>(null)
 const isRegisteringSchemas = ref(false)
 const isExecutingQuery = ref(false)
+const isSchemaOpen = ref(false)
+const resultsSection = ref<HTMLElement | null>(null)
 const queryEngine = useQueryEngine()
 const queryHistory = useQueryHistory()
 
@@ -33,6 +35,22 @@ const selectedSchemas = computed(() => {
   return schemaEntries.value
     .filter((entry) => selectedFileIds.has(entry.fileId))
     .map((entry) => entry.schema)
+})
+
+const schemaSummary = computed(() => {
+  if (isRegisteringSchemas.value) {
+    return 'Inferring schema...'
+  }
+
+  if (selectedSchemas.value.length === 0) {
+    return 'Available after CSV upload'
+  }
+
+  const tableCount = selectedSchemas.value.length
+  const columnCount = selectedSchemas.value.reduce((total, schema) => total + schema.columns.length, 0)
+  const rowCount = selectedSchemas.value.reduce((total, schema) => total + schema.row_count, 0)
+
+  return `${tableCount.toLocaleString()} ${tableCount === 1 ? 'table' : 'tables'} · ${columnCount.toLocaleString()} columns · ${rowCount.toLocaleString()} rows`
 })
 
 async function handleFilesSelected(files: CsvFileSelection[]) {
@@ -118,6 +136,8 @@ async function runQuery() {
       elapsedMs: queryResult.value.elapsed_ms,
       rowCount: queryResult.value.row_count,
     })
+    await nextTick()
+    resultsSection.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   } catch (error) {
     queryResult.value = null
     queryError.value = error instanceof Error ? error.message : 'SQL query failed.'
@@ -181,20 +201,38 @@ function formatHistoryTimestamp(timestamp: string) {
       </section>
     </div>
 
-    <section class="panel">
-      <div class="panel-title">
-        <ListTree class="size-5 text-[#faff69]" aria-hidden="true" />
-        <h2>Schema</h2>
-      </div>
-      <SchemaViewer :schemas="selectedSchemas" :is-loading="isRegisteringSchemas" :error="schemaError" />
-    </section>
-
-    <section class="panel">
+    <section ref="resultsSection" class="panel scroll-mt-24">
       <div class="panel-title">
         <TableProperties class="size-5 text-[#faff69]" aria-hidden="true" />
         <h2>Results</h2>
       </div>
       <ResultTable :result="queryResult" :is-loading="isExecutingQuery" :error="queryError" />
+    </section>
+
+    <section class="panel">
+      <button
+        type="button"
+        class="flex w-full flex-wrap items-center justify-between gap-3 text-left"
+        :aria-expanded="isSchemaOpen"
+        aria-controls="schema-details"
+        @click="isSchemaOpen = !isSchemaOpen"
+      >
+        <span class="panel-title mb-0">
+          <ListTree class="size-5 text-[#faff69]" aria-hidden="true" />
+          <span class="font-display text-xl font-bold text-white">Schema</span>
+        </span>
+        <span class="flex items-center gap-3 text-sm text-[#888888]">
+          <span>{{ schemaSummary }}</span>
+          <span class="secondary-action min-h-10 px-3 py-2 text-sm">
+            <ChevronDown v-if="isSchemaOpen" class="size-4" aria-hidden="true" />
+            <ChevronRight v-else class="size-4" aria-hidden="true" />
+            {{ isSchemaOpen ? 'Hide' : 'Show' }}
+          </span>
+        </span>
+      </button>
+      <div v-if="isSchemaOpen" id="schema-details" class="mt-4">
+        <SchemaViewer :schemas="selectedSchemas" :is-loading="isRegisteringSchemas" :error="schemaError" />
+      </div>
     </section>
 
     <section class="panel">

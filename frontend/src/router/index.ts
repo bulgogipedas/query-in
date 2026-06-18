@@ -6,7 +6,8 @@ const router = createRouter({
   routes: [
     { path: '/', component: HomePage },
     { path: '/query', component: () => import('../pages/QueryPage.vue') },
-    { path: '/projects', component: () => import('../pages/ProjectsPage.vue') },
+    { path: '/use-cases', component: () => import('../pages/UseCasesPage.vue') },
+    { path: '/projects', redirect: '/use-cases' },
     { path: '/about', redirect: '/' },
   ],
 })

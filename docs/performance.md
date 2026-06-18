@@ -8,7 +8,7 @@ Pull requests run Lighthouse CI on:
 
 - `/`
 - `/query`
-- `/projects`
+- `/use-cases`
 
 The bootstrap gate is:
 

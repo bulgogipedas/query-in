@@ -14,7 +14,7 @@ import { RouterLink } from 'vue-router'
 
       <div class="flex flex-wrap items-center justify-end gap-2 text-sm text-[#888888]">
         <RouterLink class="nav-link" to="/query">Query</RouterLink>
-        <RouterLink class="nav-link" to="/projects">Use Cases</RouterLink>
+        <RouterLink class="nav-link" to="/use-cases">Use Cases</RouterLink>
       </div>
     </nav>
   </header>

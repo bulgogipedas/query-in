@@ -8,7 +8,7 @@ module.exports = {
       url: [
         'http://127.0.0.1:4173/',
         'http://127.0.0.1:4173/query',
-        'http://127.0.0.1:4173/projects',
+        'http://127.0.0.1:4173/use-cases',
       ],
       settings: {
         chromeFlags: '--headless=new --no-sandbox',
